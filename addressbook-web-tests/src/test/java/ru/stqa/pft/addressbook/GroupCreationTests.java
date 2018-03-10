@@ -26,22 +26,24 @@ public class GroupCreationTests {
     @Test
     public void GroupCreationTests() {
         wd.get("http://localhost/addressbook/group.php");
+        wd.findElement(By.name("user")).click();
+        wd.findElement(By.name("user")).clear();
+        wd.findElement(By.name("user")).sendKeys("admin");
         wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).sendKeys("\\undefined");
-        wd.findElement(By.id("LoginForm")).click();
+        wd.findElement(By.name("pass")).clear();
+        wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.name("new")).click();
-        wd.findElement(By.id("content")).click();
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys("test2");
+        wd.findElement(By.name("group_name")).sendKeys("test 1");
         wd.findElement(By.name("group_header")).click();
         wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys("test 3");
+        wd.findElement(By.name("group_header")).sendKeys("test 1");
         wd.findElement(By.name("group_footer")).click();
         wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys("test 4");
+        wd.findElement(By.name("group_footer")).sendKeys("test 1");
         wd.findElement(By.name("submit")).click();
         wd.findElement(By.linkText("group page")).click();
     }
