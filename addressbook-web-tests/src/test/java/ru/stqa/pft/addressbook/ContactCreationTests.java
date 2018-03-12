@@ -3,9 +3,7 @@ package ru.stqa.pft.addressbook;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 
@@ -90,30 +88,6 @@ public class ContactCreationTests {
     wd.findElement(By.name("email3")).click();
     wd.findElement(By.name("email3")).clear();
     wd.findElement(By.name("email3")).sendKeys(contactData.getEmail3());
-    wd.findElement(By.name("homepage")).click();
-    wd.findElement(By.name("homepage")).clear();
-    wd.findElement(By.name("homepage")).sendKeys(contactData.getHomePage());
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[10]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[10]")).click();
-    }
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[9]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[9]")).click();
-    }
-    wd.findElement(By.name("byear")).click();
-    wd.findElement(By.name("byear")).clear();
-    wd.findElement(By.name("byear")).sendKeys("1980");
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[13]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[3]//option[13]")).click();
-    }
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[6]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[4]//option[6]")).click();
-    }
-    wd.findElement(By.name("ayear")).click();
-    wd.findElement(By.name("ayear")).clear();
-    wd.findElement(By.name("ayear")).sendKeys("2010");
-    if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).isSelected()) {
-      wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[2]")).click();
-    }
     wd.findElement(By.name("address2")).click();
     wd.findElement(By.name("address2")).clear();
     wd.findElement(By.name("address2")).sendKeys(contactData.getSecondaryAddress());
