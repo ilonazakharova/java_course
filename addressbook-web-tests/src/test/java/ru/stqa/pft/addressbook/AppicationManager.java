@@ -18,13 +18,13 @@ public class AppicationManager {
     }
   }
 
-  protected void init() {
+  public void init() {
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
     login("admin", "secret");
   }
 
-  private void login(String username, String password) {
+  public void login(String username, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys(username);
@@ -71,6 +71,6 @@ public class AppicationManager {
   }
 
   public void selectGroup() {
-      wd.findElement(By.xpath("//div[@id='content']/form/span[6]/input")).click();
+      wd.findElement(By.xpath("//div[@id='content']/form/span[1]/input")).click();
   }
 }
