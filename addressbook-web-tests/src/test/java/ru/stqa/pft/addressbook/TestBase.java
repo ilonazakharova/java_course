@@ -1,9 +1,8 @@
 package ru.stqa.pft.addressbook;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
@@ -11,7 +10,6 @@ public class TestBase {
 
   @BeforeMethod
   public void setUp() throws Exception {
-    app.wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
     app.init();
   }
 
