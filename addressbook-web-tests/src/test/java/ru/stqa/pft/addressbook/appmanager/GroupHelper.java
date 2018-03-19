@@ -6,7 +6,8 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
 
-  public GroupHelper(FirefoxDriver wd) { super(wd); }
+  public GroupHelper(FirefoxDriver wd) { super(wd);
+  }
 
   public void returnToGroupPage() {
     click(By.linkText("group page"));
@@ -30,5 +31,13 @@ public class GroupHelper extends HelperBase {
 
   public void selectGroup() {
     click(By.xpath("//div[@id='content']/form/span[1]/input"));
+  }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
   }
 }
