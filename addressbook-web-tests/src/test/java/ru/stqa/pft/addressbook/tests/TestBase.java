@@ -97,7 +97,7 @@ public class TestBase {
     wd.findElement(By.name("email3")).sendKeys(contactData.getEmail3());
 
   }
-
+ // не понятно, что делать здесь
   protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
 
   protected void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
