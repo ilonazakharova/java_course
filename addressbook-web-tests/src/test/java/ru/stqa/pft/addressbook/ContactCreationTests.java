@@ -1,11 +1,15 @@
 package ru.stqa.pft.addressbook;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
+
 
 public class ContactCreationTests {
   FirefoxDriver wd;
@@ -57,7 +61,6 @@ public class ContactCreationTests {
     wd.findElement(By.name("nickname")).click();
     wd.findElement(By.name("nickname")).clear();
     wd.findElement(By.name("nickname")).sendKeys(contactData.getNickName());
-    wd.findElement(By.name("photo")).click();
     wd.findElement(By.name("title")).click();
     wd.findElement(By.name("title")).clear();
     wd.findElement(By.name("title")).sendKeys(contactData.getTitle());

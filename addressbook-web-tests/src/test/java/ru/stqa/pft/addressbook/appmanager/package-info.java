@@ -1,0 +1,1 @@
+package ru.stqa.pft.addressbook.appmanager;
