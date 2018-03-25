@@ -1,4 +1,4 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ru.stqa.pft.addressbook.ContactData;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 import java.util.concurrent.TimeUnit;
@@ -24,7 +25,6 @@ public class TestBase {
       return false;
     }
   }
-
 
   @BeforeMethod
   public void setUp() throws Exception {
@@ -98,21 +98,20 @@ public class TestBase {
 
   }
 
-  protected void gotoContactPage() {
-    wd.findElement(By.linkText("add new")).click();
+  protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
+
+  protected void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
+
+  protected void selectContact() { wd.findElement(By.name("selected[]")).click(); }
+
+  protected void deleteSelectedContacts() {
+    wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+    wd.switchTo().alert().accept();
   }
 
   @AfterMethod
   public void tearDown() {
-    app.stop();
+    wd.quit();
   }
 
-
-  protected void deleteSelectedContacts() {
-      wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
-  }
-
-  protected void selectContact() {
-      wd.findElement(By.id("selected[]")).click();
-  }
 }
