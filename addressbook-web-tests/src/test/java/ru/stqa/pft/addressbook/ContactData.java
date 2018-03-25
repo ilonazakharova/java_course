@@ -15,12 +15,9 @@ public class ContactData {
   private final String email1;
   private final String email2;
   private final String email3;
-  private final String homePage;
-  private final String secondaryAddress;
-  private final String secondaryHome;
-  private final String secondaryNotes;
 
-  public ContactData(String FirstName, String MiddleName, String LastName, String NickName, String Title, String Company, String Address, String HomePhone, String MobilePhone, String WorkPhone, String FaxPhone, String Email1, String Email2, String Email3, String HomePage, String SecondaryAddress, String SecondaryHome, String SecondaryNotes) {
+
+  public ContactData(String FirstName, String MiddleName, String LastName, String NickName, String Title, String Company, String Address, String HomePhone, String MobilePhone, String WorkPhone, String FaxPhone, String Email1, String Email2, String Email3) {
     firstName = FirstName;
     middleName = MiddleName;
     lastName = LastName;
@@ -35,10 +32,7 @@ public class ContactData {
     email1 = Email1;
     email2 = Email2;
     email3 = Email3;
-    homePage = HomePage;
-    secondaryAddress = SecondaryAddress;
-    secondaryHome = SecondaryHome;
-    secondaryNotes = SecondaryNotes;
+
   }
 
   public String getFirstName() {
@@ -97,19 +91,5 @@ public class ContactData {
     return email3;
   }
 
-  public String getHomePage() {
-    return homePage;
-  }
 
-  public String getSecondaryAddress() {
-    return secondaryAddress;
-  }
-
-  public String getSecondaryHome() {
-    return secondaryHome;
-  }
-
-  public String getSecondaryNotes() {
-    return secondaryNotes;
-  }
 }
