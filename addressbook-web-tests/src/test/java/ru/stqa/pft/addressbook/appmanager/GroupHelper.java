@@ -8,10 +8,7 @@ public class GroupHelper extends HelperBase {
 
   public GroupHelper(WebDriver wd) { super(wd); }
 
-  public void returnToGroupPage() {
-    click(By.linkText("group page"));
-  }
-
+  public void returnToGroupPage() { click(By.linkText("group page")); }
 
   public void submitGroupCreation() { click(By.name("submit")); }
 
@@ -30,7 +27,6 @@ public class GroupHelper extends HelperBase {
   public void selectGroup() {
     click(By.xpath("//div[@id='content']/form/span[1]/input"));
   }
-
 
   public void initGroupModification() {
     click(By.name("edit"));

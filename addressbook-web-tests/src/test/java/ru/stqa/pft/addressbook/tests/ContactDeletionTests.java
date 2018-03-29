@@ -10,6 +10,7 @@ public class ContactDeletionTests extends TestBase {
        contactHelper.returnToHomePage();
        contactHelper.selectContact();
        contactHelper.deleteSelectedContacts();
+       contactHelper.closeWindow();
        contactHelper.returnToHomePage();
     }
 

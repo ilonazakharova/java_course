@@ -38,7 +38,6 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
-
   public void stop() { wd.quit(); }
 
   public GroupHelper getGroupHelper() {
@@ -48,6 +47,5 @@ public class ApplicationManager {
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
   }
-
 
 }
