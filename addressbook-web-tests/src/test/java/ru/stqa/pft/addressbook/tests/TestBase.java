@@ -16,11 +16,11 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
   WebDriver wd;
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.SAFARI);
   protected ContactHelper contactHelper;
 
 
-  public static boolean isAlertPresent(FirefoxDriver wd) {
+  public static boolean isAlertPresent(WebDriver wd) {
     try {
       wd.switchTo().alert();
       return true;
@@ -49,7 +49,7 @@ public class TestBase {
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  //protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
+  protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
 
   protected void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
 
