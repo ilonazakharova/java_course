@@ -6,7 +6,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase{
 
-
   public ContactHelper(WebDriver wd) { super(wd); }
 
   public void returnToHomePage() { click(By.linkText("home")); }
@@ -33,12 +32,9 @@ public class ContactHelper extends HelperBase{
   public void selectContact() { click(By.name("selected[]")); }
 
   public void deleteSelectedContacts() {
-    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
 
-  }
-
-  public void closeWindow (){
-    wd.switchTo().alert().accept();}
+  public void closeWindow (){ wd.switchTo().alert().accept();}
 
   public void initContactModification() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
