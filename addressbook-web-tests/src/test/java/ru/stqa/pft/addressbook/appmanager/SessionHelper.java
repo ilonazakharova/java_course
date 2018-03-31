@@ -13,5 +13,8 @@ public class SessionHelper extends HelperBase {
     type(By.name("user"), username);
     type(By.name("pass"), password);
     click(By.xpath("//form[@id='LoginForm']/input[3]"));
+
   }
+
+
 }

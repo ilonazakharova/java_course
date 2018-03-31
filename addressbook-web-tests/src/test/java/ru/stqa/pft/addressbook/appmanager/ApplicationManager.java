@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,19 +15,21 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
   private String browser;
+  public ContactHelper contactHelper;
+
 
 
   public ApplicationManager(String browser) { this.browser = browser; }
 
   public void init() {
+
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
     } else if (browser.equals(BrowserType.CHROME)) {
       wd = new ChromeDriver();
-    } //else if (browser.equals(BrowserType.SAFARI)) {
-      //wd = new SafariDriver();
-    //}
+    }
 
+    wd.get("http://localhost/addressbook/");
     wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
@@ -35,11 +38,11 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
+  public void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
   public void stop() { wd.quit(); }
-
   public GroupHelper getGroupHelper() { return groupHelper; }
-
   public NavigationHelper getNavigationHelper() { return navigationHelper; }
 
-
+  protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
+  public ContactHelper getContactHelper() {return contactHelper;}
 }
