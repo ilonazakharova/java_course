@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HelperBase {
   public WebDriver wd;
+  public ContactHelper contactHelper;
 
   public HelperBase(WebDriver wd) { this.wd = wd; }
 
@@ -26,4 +27,18 @@ public class HelperBase {
       return false;
     }
   }
+
+
+  public void login(String username, String password) {
+    wd.findElement(By.name("user")).click();
+    wd.findElement(By.name("user")).clear();
+    wd.findElement(By.name("user")).sendKeys(username);
+    wd.findElement(By.name("pass")).click();
+    wd.findElement(By.name("pass")).clear();
+    wd.findElement(By.name("pass")).sendKeys(password);
+    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+  }
+  protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
+  public ContactHelper getContactHelper() {return contactHelper;}
 }
+

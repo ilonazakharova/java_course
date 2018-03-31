@@ -8,7 +8,6 @@ import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class ApplicationManager {
   WebDriver wd;
   private SessionHelper sessionHelper;
@@ -18,11 +17,9 @@ public class ApplicationManager {
   public ContactHelper contactHelper;
 
 
-
   public ApplicationManager(String browser) { this.browser = browser; }
 
   public void init() {
-
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
     } else if (browser.equals(BrowserType.CHROME)) {
@@ -36,6 +33,7 @@ public class ApplicationManager {
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
+    contactHelper = new ContactHelper(wd);
   }
 
   public void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
@@ -43,6 +41,4 @@ public class ApplicationManager {
   public GroupHelper getGroupHelper() { return groupHelper; }
   public NavigationHelper getNavigationHelper() { return navigationHelper; }
 
-  protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
-  public ContactHelper getContactHelper() {return contactHelper;}
 }
