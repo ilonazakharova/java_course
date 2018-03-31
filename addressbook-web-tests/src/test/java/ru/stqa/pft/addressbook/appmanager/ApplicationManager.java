@@ -18,6 +18,7 @@ public class ApplicationManager {
   private String browser;
   private ContactHelper contactHelper;
 
+
   public ApplicationManager(String browser) { this.browser = browser; }
 
   public void init() {
@@ -44,4 +45,6 @@ public class ApplicationManager {
   public GroupHelper getGroupHelper() { return groupHelper; }
   public ContactHelper getContactHelper() {return contactHelper;}
   public NavigationHelper getNavigationHelper() { return navigationHelper; }
+
+
 }

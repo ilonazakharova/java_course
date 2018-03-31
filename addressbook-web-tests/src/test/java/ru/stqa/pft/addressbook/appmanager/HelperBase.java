@@ -45,5 +45,7 @@ public class HelperBase {
     }
 
   }
+
+  public void returnToHomePage() { click(By.linkText("home")); }
 }
 
