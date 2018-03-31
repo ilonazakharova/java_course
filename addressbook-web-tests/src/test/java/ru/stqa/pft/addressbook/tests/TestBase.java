@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
   WebDriver wd;
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.SAFARI);
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
   protected ContactHelper contactHelper;
 
 
@@ -49,14 +49,13 @@ public class TestBase {
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
+ protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
 
   protected void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
 
   @AfterMethod
-  public void tearDown() {
-    wd.quit();
-  }
+  public void tearDown() { wd.quit(); }
 
+ public ContactHelper getContactHelper() {return contactHelper;}
 
 }
