@@ -9,11 +9,7 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 
 public class TestBase {
-  WebDriver wd;
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
-
-
-
+  public final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
   public static boolean isAlertPresent(WebDriver wd) {
     try {
@@ -27,9 +23,7 @@ public class TestBase {
   @BeforeMethod
   public void setUp() throws Exception {
     app.init();
-
   }
-
 
   @AfterMethod
   public void tearDown() {app.stop(); }

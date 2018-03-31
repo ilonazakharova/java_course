@@ -14,8 +14,7 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
   private String browser;
-  public ContactHelper contactHelper;
-
+  private ContactHelper contactHelper;
 
   public ApplicationManager(String browser) { this.browser = browser; }
 
@@ -39,6 +38,6 @@ public class ApplicationManager {
   public void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
   public void stop() { wd.quit(); }
   public GroupHelper getGroupHelper() { return groupHelper; }
+  public ContactHelper getContactHelper() {return contactHelper;}
   public NavigationHelper getNavigationHelper() { return navigationHelper; }
-
 }
