@@ -25,7 +25,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void selectGroup() {
-    click(By.xpath("//div[@id='content']/form/span[1]/input"));
+    click(By.name("selected[]"));
   }
 
   public void initGroupModification() {
@@ -36,4 +36,15 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
+  public void createGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(group);
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
