@@ -42,7 +42,6 @@ public class ContactHelper extends HelperBase{
     }
   }
 
-
   public void submitContactCreation() { click(name("submit")); }
 
   public void closeWindow (){ wd.switchTo().alert().accept();}
@@ -50,7 +49,5 @@ public class ContactHelper extends HelperBase{
   public void initContactModification() { click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")); }
 
   public void submitContactModification() { click(name("update")); }
-
-
 
 }
