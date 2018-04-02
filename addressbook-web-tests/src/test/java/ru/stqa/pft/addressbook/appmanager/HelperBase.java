@@ -12,8 +12,10 @@ public class HelperBase {
 
   public void type(By locator, String text) {
     click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
+    if (text != null) {
+      wd.findElement(locator).clear();
+      wd.findElement(locator).sendKeys(text);
+    }
   }
 
   public boolean isAlertPresent() {
@@ -24,17 +26,6 @@ public class HelperBase {
       return false;
     }
   }
-
-  public void login(String username, String password) {
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(username);
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-  }
-  protected void gotoGroupPage() { wd.findElement(By.name("new")).click(); }
 
   protected boolean isElementPresent(By locator) {
     try {

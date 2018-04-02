@@ -7,6 +7,7 @@ public class NavigationHelper extends HelperBase {
 
   public NavigationHelper(WebDriver wd) {
     super(wd);
+
   }
 
   public void gotoGroupPage() {
@@ -23,5 +24,6 @@ public class NavigationHelper extends HelperBase {
       return;
     }
     click(By.linkText("home")); }
+
 
 }
