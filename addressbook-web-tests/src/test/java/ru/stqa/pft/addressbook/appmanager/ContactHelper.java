@@ -18,8 +18,7 @@ public class ContactHelper extends HelperBase{
 
   public void deleteSelectedContacts() { click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
 
-  public void fillContactForm(ContactData contactData, boolean creation)
-  {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(name("firstname"), contactData.getFirstName());
     type(name("middlename"), contactData.getMiddleName());
     type(name("lastname"), contactData.getLastName());

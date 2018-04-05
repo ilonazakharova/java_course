@@ -28,6 +28,11 @@ public class NavigationHelper extends HelperBase {
     click(By.linkText("home")); }
 
 
-  public void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
-
+  public void gotoContactPage() {
+    if (isElementPresent(By.xpath("//li[contains(@class,  'all') and contains (., 'add new')]")))
+      return;
+    {
+      wd.findElement(By.linkText("add new")).click();
+    }
+  }
 }

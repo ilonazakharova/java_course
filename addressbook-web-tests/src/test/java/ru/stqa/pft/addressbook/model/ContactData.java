@@ -18,10 +18,21 @@ public class ContactData {
   private String group;
 
 
-  public ContactData(String FirstName, String MiddleName, String LastName, String NickName,
-                     String Title, String Company, String Address, String HomePhone,
-                     String MobilePhone, String WorkPhone, String FaxPhone, String Email1,
-                     String Email2, String Email3, String group) {
+  public ContactData(String FirstName,
+                     String MiddleName,
+                     String LastName,
+                     String NickName,
+                     String Title,
+                     String Company,
+                     String Address,
+                     String HomePhone,
+                     String MobilePhone,
+                     String WorkPhone,
+                     String FaxPhone,
+                     String Email1,
+                     String Email2,
+                     String Email3,
+                     String group) {
     firstName = FirstName;
     middleName = MiddleName;
     lastName = LastName;
@@ -36,7 +47,6 @@ public class ContactData {
     email1 = Email1;
     email2 = Email2;
     email3 = Email3;
-
     this.group = group;
   }
 
