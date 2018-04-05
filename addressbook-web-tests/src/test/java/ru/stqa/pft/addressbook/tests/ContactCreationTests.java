@@ -10,9 +10,22 @@ public class ContactCreationTests extends TestBase {
     app.getContactHelper().returnToHomePage();
     app.getContactHelper().initContactCreation();
     app.getNavigationHelper().gotoContactPage();
-    app.getContactHelper().fillContactForm(new ContactData("Ilona", "Middle name", "Last name", "nickname", "title", "company",
-            "address", "+123456789", "+12345678", "+1234567", "+123456",
-            "email1@email.com", "email2@email.com", "email3@email.com", "test1"), true);
+    app.getContactHelper().fillContactForm(new ContactData(
+            "Ilona",
+            null,
+            "Zakharova",
+            null,
+            null,
+            null,
+            "Address",
+            "+123456789",
+            "+12345678",
+            "+1234567",
+            null,
+            "email1@email.com",
+            "email2@email.com",
+            "email3@email.com",
+            "test1"), true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
   }
