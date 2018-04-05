@@ -41,5 +41,13 @@ public class HelperBase {
   }
 
   public void returnToHomePage() { click(By.linkText("home")); }
+
+  public void gotoContactPage() {
+    if (isElementPresent(By.xpath("//li[contains(@class,  'all') and contains (., 'add new')]")))
+      return;
+    {
+      wd.findElement(By.linkText("add new")).click();
+    }
+  }
 }
 
