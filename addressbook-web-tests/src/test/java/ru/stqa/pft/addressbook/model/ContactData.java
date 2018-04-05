@@ -105,4 +105,6 @@ public class ContactData {
   public String getEmail3() { return email3; }
 
   public String getGroup() { return group; }
+
+
 }

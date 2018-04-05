@@ -8,7 +8,7 @@ public class ContactModificationTests extends TestBase {
 
 
   @Test
-  public void testContactModification () {
+  public void testContactModification(boolean creation) {
     app.getContactHelper().returnToHomePage();
 
     if (! app.getContactHelper().isThereAContact()) {
@@ -26,7 +26,7 @@ public class ContactModificationTests extends TestBase {
               "email1@email.com",
               "email2@email.com",
               "email3@email.com",
-              "test1"));
+              "test1"), creation);
     }
 
 
@@ -46,7 +46,7 @@ public class ContactModificationTests extends TestBase {
             "email1@email.com",
             "email2@email.com",
             "email3@email.com",
-            null), false);
+            null), creation);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
   }
