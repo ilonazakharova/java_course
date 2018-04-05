@@ -19,7 +19,7 @@ public class ApplicationManager {
 
   public ApplicationManager(String browser) { this.browser = browser; }
 
-  
+
   public void init() {
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
