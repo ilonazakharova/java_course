@@ -17,7 +17,7 @@ public class ContactCreationTests extends TestBase {
             null,
             null,
             null,
-            "Address",
+            "Belarus, Minsk",
             "+123456789",
             "+12345678",
             "+1234567",
