@@ -19,6 +19,7 @@ public class ApplicationManager {
 
   public ApplicationManager(String browser) { this.browser = browser; }
 
+  
   public void init() {
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
@@ -26,6 +27,7 @@ public class ApplicationManager {
       wd = new ChromeDriver();
     } else if (browser.equals(BrowserType.IE))
       wd = new InternetExplorerDriver();
+
 
     wd.get("http://localhost/addressbook/");
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -36,6 +38,7 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
+
 
   public void stop() { wd.quit(); }
   public GroupHelper getGroupHelper() { return groupHelper; }
