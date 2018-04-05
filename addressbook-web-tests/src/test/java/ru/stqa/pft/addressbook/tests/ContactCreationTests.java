@@ -6,7 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactCreationTests extends TestBase {
 
   @Test
-  public void testContactCreation(boolean creation) {
+  public void testContactCreation() {
     app.getContactHelper().returnToHomePage();
     app.getContactHelper().createContact(new ContactData(
             "Ilona",
@@ -23,6 +23,6 @@ public class ContactCreationTests extends TestBase {
             "email1@email.com",
             "email2@email.com",
             "email3@email.com",
-            "test1"), creation);
+            "test1"));
   }
 }
