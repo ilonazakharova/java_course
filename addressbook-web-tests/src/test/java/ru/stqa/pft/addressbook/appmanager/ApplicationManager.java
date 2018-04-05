@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,7 +17,6 @@ public class ApplicationManager {
   private String browser;
   private ContactHelper contactHelper;
 
-
   public ApplicationManager(String browser) { this.browser = browser; }
 
   public void init() {
@@ -28,7 +26,6 @@ public class ApplicationManager {
       wd = new ChromeDriver();
     } else if (browser.equals(BrowserType.IE))
       wd = new InternetExplorerDriver();
-
 
     wd.get("http://localhost/addressbook/");
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -40,11 +37,8 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
-  public void gotoContactPage() { wd.findElement(By.linkText("add new")).click(); }
   public void stop() { wd.quit(); }
   public GroupHelper getGroupHelper() { return groupHelper; }
   public ContactHelper getContactHelper() {return contactHelper;}
   public NavigationHelper getNavigationHelper() { return navigationHelper; }
-
-
 }
