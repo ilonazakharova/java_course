@@ -80,11 +80,11 @@ public class ContactHelper extends HelperBase{
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//td[@class='center']/input"));
     for (WebElement element : elements) {
-      String Lastname = element.getText();
+      String lastname = element.getText();
       ContactData contact = new ContactData(
               null,
               null,
-              Lastname,
+              lastname,
               null,
               null,
               null,
