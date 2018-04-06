@@ -7,7 +7,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactModificationTests extends TestBase {
 
 
-
   @Test
   public void testContactModification () {
     app.getContactHelper().returnToHomePage();
@@ -32,7 +31,7 @@ public class ContactModificationTests extends TestBase {
     }
 
 
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData(
             "Ilona",
@@ -55,6 +54,5 @@ public class ContactModificationTests extends TestBase {
     int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after, before);
   }
-
 
 }
