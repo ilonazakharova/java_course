@@ -18,42 +18,77 @@ public class ContactData {
   private final String email2;
   private final String email3;
   private String group;
+  private String id;
 
 
-  public ContactData(String FirstName,
-                     String MiddleName,
-                     String LastName,
-                     String NickName,
-                     String Title,
-                     String Company,
-                     String Address,
-                     String HomePhone,
-                     String MobilePhone,
-                     String WorkPhone,
-                     String FaxPhone,
-                     String Email1,
-                     String Email2,
-                     String Email3,
-                     String group) {
-    firstName = FirstName;
-    middleName = MiddleName;
-    lastName = LastName;
-    nickName = NickName;
-    title = Title;
-    company = Company;
-    address = Address;
-    homePhone = HomePhone;
-    mobilePhone = MobilePhone;
-    workPhone = WorkPhone;
-    faxPhone = FaxPhone;
-    email1 = Email1;
-    email2 = Email2;
-    email3 = Email3;
+  public ContactData(
+          String FirstName,
+          String MiddleName,
+          String LastName,
+          String NickName,
+          String Title,
+          String Company,
+          String Address,
+          String HomePhone,
+          String MobilePhone,
+          String WorkPhone,
+          String FaxPhone,
+          String Email1,
+          String Email2,
+          String Email3,
+          String group) {
+    this.firstName = FirstName;
+    this.middleName = MiddleName;
+    this.lastName = LastName;
+    this.nickName = NickName;
+    this.title = Title;
+    this.company = Company;
+    this.address = Address;
+    this.homePhone = HomePhone;
+    this.mobilePhone = MobilePhone;
+    this.workPhone = WorkPhone;
+    this.faxPhone = FaxPhone;
+    this.email1 = Email1;
+    this.email2 = Email2;
+    this.email3 = Email3;
     this.group = group;
+    this.id = null;
   }
 
-
-
+  public ContactData(
+          String FirstName,
+          String MiddleName,
+          String LastName,
+          String NickName,
+          String Title,
+          String Company,
+          String Address,
+          String HomePhone,
+          String MobilePhone,
+          String WorkPhone,
+          String FaxPhone,
+          String Email1,
+          String Email2,
+          String Email3,
+          String group,
+          String id) {
+    this.firstName = FirstName;
+    this.middleName = MiddleName;
+    this.lastName = LastName;
+    this.nickName = NickName;
+    this.title = Title;
+    this.company = Company;
+    this.address = Address;
+    this.homePhone = HomePhone;
+    this.mobilePhone = MobilePhone;
+    this.workPhone = WorkPhone;
+    this.faxPhone = FaxPhone;
+    this.email1 = Email1;
+    this.email2 = Email2;
+    this.email3 = Email3;
+    this.group = group;
+    this.id = id;
+  }
 
   public String getFirstName() {
     return firstName;
@@ -111,33 +146,31 @@ public class ContactData {
 
   public String getGroup() { return group; }
 
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName) &&
-            Objects.equals(address, that.address) &&
-            Objects.equals(homePhone, that.homePhone) &&
-            Objects.equals(mobilePhone, that.mobilePhone) &&
-            Objects.equals(workPhone, that.workPhone) &&
-            Objects.equals(email1, that.email1) &&
-            Objects.equals(email2, that.email2) &&
-            Objects.equals(email3, that.email3);
-  }
-
-  @Override
-  public int hashCode() {
-
-    return Objects.hash(firstName, lastName, address, homePhone, mobilePhone, workPhone, email1, email2, email3);
+  public String getId() {
+    return id;
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
             "lastName='" + lastName + '\'' +
+            ", id='" + id + '\'' +
             '}';
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(lastName, that.lastName) &&
+            Objects.equals(id, that.id);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(lastName, id);
+  }
+
 }

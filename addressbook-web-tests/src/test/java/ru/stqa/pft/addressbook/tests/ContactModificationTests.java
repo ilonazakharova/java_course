@@ -34,21 +34,22 @@ public class ContactModificationTests extends TestBase {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initContactModification();
-    ContactData contact = new ContactData(
-            "Ilona",
+    ContactData contact = new ContactData(before.get(before.size() - 1).getId(),
+            "Ilonka",
             "Middle name",
-            "Zakharova",
+            "Zakharova-M",
             "nickname",
             "title",
             "company",
-            "Belarus, Minsk",
+            "Belarus, Minsk region",
+            "+1234567890",
             "+123456789",
             "+12345678",
             "+1234567",
-            "+123456",
-            "email1@email.com",
-            "email2@email.com",
-            "email3@email.com", null);
+            "email100@email.com",
+            "email200@email.com",
+            "email300@email.com",
+            "test1");
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
