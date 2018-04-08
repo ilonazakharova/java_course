@@ -51,7 +51,7 @@ public class ContactModificationTests extends TestBase {
             "email2@email.com",
             "email3@email.com",
             null);
-    app.getContactHelper().fillContactForm(new ContactData(contact, false));
+    app.getContactHelper().fillContactForm(new ContactData(contact));
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
