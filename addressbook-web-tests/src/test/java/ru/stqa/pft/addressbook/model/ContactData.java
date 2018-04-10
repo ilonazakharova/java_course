@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
+  private String id;
   private final String firstName;
   private final String middleName;
   private final String lastName;
@@ -18,7 +19,8 @@ public class ContactData {
   private final String email2;
   private final String email3;
   private String group;
-  private String id;
+
+
 
 
   public ContactData(
@@ -37,6 +39,7 @@ public class ContactData {
           String Email2,
           String Email3,
           String group) {
+    this.id = null;
     this.firstName = FirstName;
     this.middleName = MiddleName;
     this.lastName = LastName;
@@ -52,10 +55,11 @@ public class ContactData {
     this.email2 = Email2;
     this.email3 = Email3;
     this.group = group;
-    this.id = null;
+
   }
 
   public ContactData(
+          String id,
           String FirstName,
           String MiddleName,
           String LastName,
@@ -70,8 +74,9 @@ public class ContactData {
           String Email1,
           String Email2,
           String Email3,
-          String group,
-          String id) {
+          String group
+         ) {
+    this.id = id;
     this.firstName = FirstName;
     this.middleName = MiddleName;
     this.lastName = LastName;
@@ -87,7 +92,37 @@ public class ContactData {
     this.email2 = Email2;
     this.email3 = Email3;
     this.group = group;
-    this.id = id;
+
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(id, that.id) &&
+            Objects.equals(firstName, that.firstName) &&
+            Objects.equals(lastName, that.lastName);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(id, firstName, lastName);
+  }
+
+  @Override
+  public String toString() {
+
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
   }
 
   public String getFirstName() {
@@ -146,31 +181,5 @@ public class ContactData {
 
   public String getGroup() { return group; }
 
-  public String getId() {
-    return id;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "lastName='" + lastName + '\'' +
-            ", id='" + id + '\'' +
-            '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(lastName, that.lastName) &&
-            Objects.equals(id, that.id);
-  }
-
-  @Override
-  public int hashCode() {
-
-    return Objects.hash(lastName, id);
-  }
 
 }
