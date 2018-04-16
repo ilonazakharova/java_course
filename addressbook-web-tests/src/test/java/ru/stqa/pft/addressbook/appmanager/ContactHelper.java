@@ -78,6 +78,7 @@ public class ContactHelper extends HelperBase{
 
 
       ContactData contact = new ContactData(
+              id,
               firstname,
               null,
               lastname,
@@ -92,7 +93,7 @@ public class ContactHelper extends HelperBase{
               null,
               null,
               null,
-              null, id);
+              null);
       contacts.add(contact);
     }
     return contacts;
@@ -103,8 +104,5 @@ public class ContactHelper extends HelperBase{
 
   public void initContactModification(int index) {
     wd.findElements(By.xpath("//tr[@name='entry']")).get(index);
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
-   }
-
-
+  }
 }

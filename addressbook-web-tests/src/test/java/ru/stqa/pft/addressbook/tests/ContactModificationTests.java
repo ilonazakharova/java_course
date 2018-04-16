@@ -34,7 +34,7 @@ public class ContactModificationTests extends TestBase {
               "test1"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().initContactModification(1);
+    app.getContactHelper().initContactModification(before.size() - 1);
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(),
             "Tanya",
             null,
