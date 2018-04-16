@@ -69,7 +69,7 @@ public class ContactHelper extends HelperBase{
   public int getContactCount() { return wd.findElements(By.name("selected[]")).size(); }
 
   public List<ContactData> getContactList() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
@@ -103,6 +103,7 @@ public class ContactHelper extends HelperBase{
 
 
   public void initContactModification(int index) {
-    wd.findElements(By.xpath("//tr[@name='entry']")).get(index);
+    wd.findElements(By.xpath("(//td[@class='center']/following-sibling::td)[7]")).get(index);
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 }
