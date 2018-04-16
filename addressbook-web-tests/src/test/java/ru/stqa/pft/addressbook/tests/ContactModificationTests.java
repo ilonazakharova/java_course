@@ -11,11 +11,11 @@ public class ContactModificationTests extends TestBase {
 
 
   @Test
-  public void testContactModification () {
+  public void testContactModification() {
     app.getContactHelper().returnToHomePage();
-   if (! app.getContactHelper().isThereAContact()) {
+    if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData(
-             "Ilona",
+              "Ilona",
               null,
               "Zakharova",
               null,
@@ -23,13 +23,13 @@ public class ContactModificationTests extends TestBase {
               null,
               "Belarus, Minsk",
               "+123456789",
-             "+12345678",
-             "+1234567",
+              "+12345678",
+              "+1234567",
               null,
-             "email1@email.com",
-             "email2@email.com",
+              "email1@email.com",
+              "email2@email.com",
               "email3@email.com",
-             "test1"));
+              "test1"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().initContactModification();
