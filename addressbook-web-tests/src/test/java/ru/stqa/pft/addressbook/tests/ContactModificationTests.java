@@ -9,9 +9,6 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-
-
-
   @Test
   public void testContactModification() {
     app.getContactHelper().returnToHomePage();
@@ -36,7 +33,7 @@ public class ContactModificationTests extends TestBase {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().initContactModification(before.size() - 1);
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(),
-            "Tanya",
+            "Ilona",
             null,
             "Zakharova",
             null,
@@ -57,5 +54,6 @@ public class ContactModificationTests extends TestBase {
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+
   }
 }

@@ -10,6 +10,7 @@ public class HelperBase {
   public HelperBase(WebDriver wd) { this.wd = wd; }
   public void click(By locator) { wd.findElement(locator).click(); }
 
+
   public void type(By locator, String text) {
     click(locator);
     if (text != null) {
@@ -37,7 +38,6 @@ public class HelperBase {
     } catch (NoSuchElementException ex) {
       return false;
     }
-
   }
 
   public void returnToHomePage() { click(By.linkText("home")); }
@@ -45,9 +45,7 @@ public class HelperBase {
   public void gotoContactPage() {
     if (isElementPresent(By.xpath("//li[contains(@class,  'all') and contains (., 'add new')]")))
       return;
-    {
-      wd.findElement(By.linkText("add new")).click();
-    }
+    { wd.findElement(By.linkText("add new")).click(); }
   }
 }
 
