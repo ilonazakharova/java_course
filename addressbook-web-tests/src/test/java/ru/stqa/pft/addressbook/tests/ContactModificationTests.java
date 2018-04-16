@@ -32,7 +32,6 @@ public class ContactModificationTests extends TestBase {
              "test1"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-
     app.getContactHelper().initContactModification();
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(),
             "Ilona",
@@ -57,5 +56,4 @@ public class ContactModificationTests extends TestBase {
     Assert.assertEquals(after.size(), before.size());
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
-
 }
