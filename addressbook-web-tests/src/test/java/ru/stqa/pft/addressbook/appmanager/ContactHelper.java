@@ -14,7 +14,6 @@ import static org.openqa.selenium.By.name;
 
 public class ContactHelper extends HelperBase{
 
-  public int index;
 
   public ContactHelper(WebDriver wd) { super(wd); }
 
@@ -22,11 +21,6 @@ public class ContactHelper extends HelperBase{
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click(); }
-
-
-  public void initContactModification(int index) {
-    wd.findElements(By.xpath("//tr[@name='entry']")).get(index);
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")); }
 
 
   public void deleteSelectedContacts() { click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
@@ -78,11 +72,12 @@ public class ContactHelper extends HelperBase{
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
-      String id = element.findElement(By.tagName("input")).getAttribute("value");
-      String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
       String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
+      String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
+
+
       ContactData contact = new ContactData(
-              id,
               firstname,
               null,
               lastname,
@@ -97,12 +92,19 @@ public class ContactHelper extends HelperBase{
               null,
               null,
               null,
-              null);
+              null, id);
       contacts.add(contact);
     }
     return contacts;
   }
 
+
+
+
+  public void initContactModification(int index) {
+    wd.findElements(By.xpath("//tr[@name='entry']")).get(index);
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+   }
 
 
 }
