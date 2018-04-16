@@ -32,7 +32,7 @@ public class ContactModificationTests extends TestBase {
              "test1"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectContact(before.size() - 1);
+
     app.getContactHelper().initContactModification();
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(),
             "Tanya",
@@ -41,7 +41,7 @@ public class ContactModificationTests extends TestBase {
             null,
             null,
             null,
-            "Belarus, Minsk",
+            "Belarus, Gomel",
             "+0123456789",
             "+012345678",
             "+01234567",
@@ -55,9 +55,6 @@ public class ContactModificationTests extends TestBase {
     app.getContactHelper().returnToHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
-
-    before.remove(before.size() - 1);
-    before.add(contact);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 
