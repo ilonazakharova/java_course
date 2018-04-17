@@ -32,8 +32,7 @@ public class ContactCreationTests extends TestBase {
     app.getContactHelper().createContact(contact);
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() + 1);
-
-
+    
     int max = 0;
     for (ContactData c: after) {
       if (c.getId() > max) {
