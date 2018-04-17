@@ -192,11 +192,5 @@ public class ContactData {
     return result;
   }
 
-
-  // @Override
-  //public int hashCode() {
-  //return Objects.hash(id, firstName, lastName);
-  //}
-
 }
 
