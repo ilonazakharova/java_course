@@ -1,7 +1,6 @@
-package ru.stqa.pft.addressbook.tests;
+package ru.stqa.pft.addressbook.model;
 
 import com.google.common.collect.ForwardingSet;
-import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,16 +21,17 @@ public class Contacts extends ForwardingSet<ContactData> {
     return delegate;
   }
 
+
+
+  public Contacts without(ContactData contact) {
+    Contacts contacts = new Contacts(this);
+    contacts.remove(contact);
+    return contacts;
+  }
+
   public Contacts withAdded(ContactData contact) {
     Contacts contacts = new Contacts(this);
     contacts.add(contact);
     return contacts;
   }
-
-  public Contacts without(ContactData contact) {
-    Contacts contacts = new Contacts(this);
-    contacts.add(contact);
-    return contacts;
-  }
-
 }
