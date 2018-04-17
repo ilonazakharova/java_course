@@ -32,12 +32,17 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.xpath("(//td[@class='center']/following-sibling::td)[7]/a/img")).get(index).click(); }
 
 
+  private void initContactModificationId(int id) {
+    wd.findElement(By.cssSelector(String.format("a[href='edit_php?id='%s']", id))).click();
+  }
+
     public void modify(ContactData contact) {
     initContactModificationId(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     homePage();
   }
+
 
 
   public void deleteSelectedContacts() { click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
@@ -153,7 +158,6 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
-
 
 
 }

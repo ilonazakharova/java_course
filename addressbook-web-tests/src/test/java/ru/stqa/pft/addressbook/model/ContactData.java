@@ -188,7 +188,6 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-
     return Objects.hash(id, firstName, lastName);
   }
 }
