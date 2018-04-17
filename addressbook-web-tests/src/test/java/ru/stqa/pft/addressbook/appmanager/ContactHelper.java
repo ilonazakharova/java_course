@@ -129,15 +129,20 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
+  private Contacts contactCache = null;
 
   public Contacts all() {
-    Contacts contacts = new Contacts();
+      if (contactCache != null) {
+        return new Contacts(contactCache);
+    }
+
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
       String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
-      contacts.add(new ContactData()
+      contactCache.add(new ContactData()
               .withId(id)
               .withFirstName(firstname)
               .withMiddleName(null)
@@ -155,7 +160,7 @@ public class ContactHelper extends HelperBase {
               .withEmail3(null)
               .withGroup(null));
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
 
 
