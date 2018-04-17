@@ -20,6 +20,8 @@ public class ContactData {
   private final String email3;
   private String group;
 
+
+
   public ContactData(
           String FirstName,
           String MiddleName,
@@ -36,7 +38,7 @@ public class ContactData {
           String Email2,
           String Email3,
           String group) {
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;
     this.firstName = FirstName;
     this.middleName = MiddleName;
     this.lastName = LastName;
@@ -163,7 +165,6 @@ public class ContactData {
 
   @Override
   public String toString() {
-
     return "ContactData{" +
             "id='" + id + '\'' +
             ", firstName='" + firstName + '\'' +
@@ -175,22 +176,13 @@ public class ContactData {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     ContactData that = (ContactData) o;
-
-    return id == that.id &&
-            Objects.equals(firstName, that.firstName) &&
+    return Objects.equals(firstName, that.firstName) &&
             Objects.equals(lastName, that.lastName);
   }
 
-
   @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-    return result;
-  }
+  public int hashCode() { return Objects.hash(firstName, lastName); }
 
 }
 
