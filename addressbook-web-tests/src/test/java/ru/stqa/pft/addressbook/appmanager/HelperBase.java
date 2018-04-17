@@ -40,9 +40,9 @@ public class HelperBase {
     }
   }
 
-  public void returnToHomePage() { click(By.linkText("home")); }
+  public void homePage() { click(By.linkText("home")); }
 
-  public void gotoContactPage() {
+  public void contactPage() {
     if (isElementPresent(By.xpath("//li[contains(@class,  'all') and contains (., 'add new')]")))
       return;
     { wd.findElement(By.linkText("add new")).click(); }

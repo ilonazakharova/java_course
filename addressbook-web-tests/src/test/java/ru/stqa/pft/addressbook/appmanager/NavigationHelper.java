@@ -21,14 +21,14 @@ public class NavigationHelper extends HelperBase {
   }
 
 
-  public void returnToHomePage() {
+  public void homePage() {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
     click(By.linkText("home")); }
 
 
-  public void gotoContactPage() {
+  public void contactPage() {
     if (isElementPresent(By.xpath("//li[contains(@class,  'all') and contains (., 'add new')]")))
       return;
     {
