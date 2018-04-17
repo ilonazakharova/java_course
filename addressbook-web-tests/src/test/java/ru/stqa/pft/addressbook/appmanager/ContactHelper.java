@@ -60,6 +60,9 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
+
+
+
   public boolean isThereAContact() { return isElementPresent(By.name("selected[]")); }
 
   public int getContactCount() { return wd.findElements(By.name("selected[]")).size(); }
@@ -68,7 +71,7 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
-      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
       String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
       ContactData contact = new ContactData(
