@@ -87,24 +87,23 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
       String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
-      ContactData contact = new ContactData(
-              id,
-              firstname,
-              null,
-              lastname,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null,
-              null);
-      contacts.add(contact);
+      contacts.add(new ContactData()
+              .withId(id)
+              .withFirstName(firstname)
+              .withMiddleName(null)
+              .withLastName(lastname)
+              .withNickName(null)
+              .withTitle(null)
+              .withCompany(null)
+              .withAddress(null)
+              .withHomePhone(null)
+              .withMobilePhone(null)
+              .withWorkPhone(null)
+              .withFaxPhone(null)
+              .withEmail1(null)
+              .withEmail2(null)
+              .withEmail3(null)
+              .withGroup(null));
     }
     return contacts;
   }
