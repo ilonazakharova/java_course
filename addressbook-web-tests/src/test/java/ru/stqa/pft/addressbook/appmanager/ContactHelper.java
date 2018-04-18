@@ -39,6 +39,7 @@ public class ContactHelper extends HelperBase {
     initContactModificationId(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
+    contactCache = null;
     homePage();
   }
 
@@ -80,6 +81,7 @@ public class ContactHelper extends HelperBase {
     contactPage();
     fillContactForm(contact, true);
     submitContactCreation();
+    contactCache = null;
     homePage();
   }
 
@@ -87,6 +89,7 @@ public class ContactHelper extends HelperBase {
     selectContact (index);
     deleteSelectedContacts();
     closeWindow();
+    contactCache = null;
     homePage();
   }
 
@@ -94,6 +97,7 @@ public class ContactHelper extends HelperBase {
     selectContactById (contact.getId());
     deleteSelectedContacts();
     closeWindow();
+    contactCache = null;
     homePage();
   }
 
