@@ -15,7 +15,6 @@ import static org.openqa.selenium.By.name;
 
 public class ContactHelper extends HelperBase {
 
-
   public ContactHelper(WebDriver wd) { super(wd); }
 
   public void initContactCreation() { click(By.linkText("add new")); }
@@ -29,8 +28,6 @@ public class ContactHelper extends HelperBase {
 
   public void initContactModification(int index) {
     wd.findElements(By.xpath("(//td[@class='center']/following-sibling::td)[7]/a/img")).get(index).click(); }
-
-
 
 
     public void modify(ContactData contact) {
@@ -107,8 +104,12 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
-      String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
+      //String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
+      //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
+      List<WebElement> cells = element.findElements(By.xpath("(//td[@class='center']/following-sibling::td)"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
       contacts.add(new ContactData()
               .withId(id)
               .withFirstName(firstname)
@@ -140,13 +141,14 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
-      String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
-      String[] phones = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[5]")).getText().split("\n");
+      //String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
+      //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
+      //String allPhones = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[5]")).getText();
 
-      //String firstname = cells.get(2).getText();
-      //String lasttname = cells.get(1).getText();
-      //String allPhones = cells.get(5).getText();
+      List<WebElement> cells = element.findElements(By.xpath("(//td[@class='center']/following-sibling::td)"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
       contactCache.add(new ContactData()
               .withId(id)
               .withFirstName(firstname)
@@ -156,9 +158,7 @@ public class ContactHelper extends HelperBase {
               .withTitle(null)
               .withCompany(null)
               .withAddress(null)
-              .withHomePhone(phones[0])
-              .withMobilePhone(phones[1])
-              .withWorkPhone(phones[2])
+              .withAllPhones(allPhones)
               .withFaxPhone(null)
               .withEmail1(null)
               .withEmail2(null)
