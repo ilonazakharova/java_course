@@ -106,10 +106,11 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       //String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
       //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
-      List<WebElement> cells = element.findElements(By.xpath("(//td[@class='center']/following-sibling::td)"));
+      List<WebElement> cells = element.findElements(By.xpath("//td[@class='center']/following-sibling::td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String allPhones = cells.get(5).getText();
+      String allEmails = cells.get(4).getText();
       contacts.add(new ContactData()
               .withId(id)
               .withFirstName(firstname)
@@ -119,13 +120,9 @@ public class ContactHelper extends HelperBase {
               .withTitle(null)
               .withCompany(null)
               .withAddress(null)
-              .withHomePhone(null)
-              .withMobilePhone(null)
-              .withWorkPhone(null)
+              .withAllPhones(allPhones)
               .withFaxPhone(null)
-              .withEmail1(null)
-              .withEmail2(null)
-              .withEmail3(null)
+              .withAllEmails(allEmails)
               .withGroup(null));
     }
     return contacts;
@@ -145,10 +142,11 @@ public class ContactHelper extends HelperBase {
       //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
       //String allPhones = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[5]")).getText();
 
-      List<WebElement> cells = element.findElements(By.xpath("(//td[@class='center']/following-sibling::td)"));
+      List<WebElement> cells = element.findElements(By.xpath("//td[@class='center']/following-sibling::td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String allPhones = cells.get(5).getText();
+      String allEmails = cells.get(4).getText();;
       contactCache.add(new ContactData()
               .withId(id)
               .withFirstName(firstname)
@@ -160,9 +158,7 @@ public class ContactHelper extends HelperBase {
               .withAddress(null)
               .withAllPhones(allPhones)
               .withFaxPhone(null)
-              .withEmail1(null)
-              .withEmail2(null)
-              .withEmail3(null)
+              .withAllEmails(allEmails)
               .withGroup(null));
     }
     return new Contacts(contactCache);
