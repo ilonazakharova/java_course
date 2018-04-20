@@ -106,7 +106,7 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       //String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
       //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
-      List<WebElement> cells = element.findElements(By.xpath("//td[@class='center']/following-sibling::td"));
+      List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String allPhones = cells.get(5).getText();
@@ -142,7 +142,7 @@ public class ContactHelper extends HelperBase {
       //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
       //String allPhones = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[5]")).getText();
 
-      List<WebElement> cells = element.findElements(By.xpath("//td[@class='center']/following-sibling::td"));
+      List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String allPhones = cells.get(5).getText();
@@ -191,7 +191,6 @@ public class ContactHelper extends HelperBase {
             .withEmail3(null)
             .withGroup(null);
   }
-
 
   private void initContactModificationId(int id) {
     WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));

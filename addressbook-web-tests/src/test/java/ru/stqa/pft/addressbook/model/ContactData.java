@@ -27,13 +27,13 @@ public class ContactData {
     return allPhones;
   }
 
-  public String getAllEmails() {
-    return allEmails;
-  }
-
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   public ContactData withAllEmails(String allEmails) {
@@ -41,8 +41,7 @@ public class ContactData {
     return this;
   }
 
-
-
+  
 
   public int getId() {
     return id;
