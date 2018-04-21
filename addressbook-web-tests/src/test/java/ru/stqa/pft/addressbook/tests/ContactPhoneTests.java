@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.Arrays;
@@ -19,7 +18,6 @@ public class ContactPhoneTests extends TestBase {
     assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
     assertThat(contact.getAddress(), equalTo(mergeAddress(contactInfoFromEditForm)));
   }
-
 
   private String mergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
@@ -44,6 +42,4 @@ public class ContactPhoneTests extends TestBase {
   public static String cleaned(String phone) {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
-  
-
 }
