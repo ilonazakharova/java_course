@@ -1,7 +1,5 @@
 package ru.stqa.pft.addressbook.generators;
-
 import ru.stqa.pft.addressbook.model.ContactData;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,11 +12,9 @@ public class ContactDataGenerator {
   public static void main (String[] agrs) throws IOException {
     int count = Integer.parseInt(agrs[0]);
     File file = new File(agrs[1]);
-
     List<ContactData> contacts = generateContacts(count);
     save(contacts, file);
   }
-
 
   private static void save(List<ContactData> contacts, File file) throws IOException {
     System.out.println(new File(".").getAbsoluteFile());
