@@ -22,7 +22,7 @@ public class ContactHelper extends HelperBase {
 
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click(); }
-    
+
   public void initContactModification(int index) {
     wd.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[7]/a[@href=\"edit.php?id=" + index + "\"]/img")).click();
   }
@@ -52,6 +52,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+    attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
       new Select(wd.findElement(name("new_group"))).selectByVisibleText(contactData.getGroup());
