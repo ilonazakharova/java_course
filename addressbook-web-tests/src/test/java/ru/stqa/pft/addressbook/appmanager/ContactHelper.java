@@ -1,5 +1,4 @@
 package ru.stqa.pft.addressbook.appmanager;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +6,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,17 +25,16 @@ public class ContactHelper extends HelperBase {
 
 
   public void initContactModification(int index) {
-    wd.findElements(By.xpath("(//td[@class='center']/following-sibling::td)[7]/a/img")).get(index).click(); }
+    wd.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[7]/a[@href=\"edit.php?id=" + index + "\"]/img")).click();
+  }
 
-
-    public void modify(ContactData contact) {
+  public void modify(ContactData contact) {
     initContactModificationId(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     contactCache = null;
     homePage();
   }
-
 
   public void deleteSelectedContacts() { click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
 
@@ -104,13 +101,12 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      //String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
-      //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-      String allPhones = cells.get(5).getText();
+      String address = cells.get(3).getText();
       String allEmails = cells.get(4).getText();
+      String allPhones = cells.get(5).getText();
       contacts.add(new ContactData()
               .withId(id)
               .withFirstName(firstname)
@@ -119,7 +115,7 @@ public class ContactHelper extends HelperBase {
               .withNickName(null)
               .withTitle(null)
               .withCompany(null)
-              .withAddress(null)
+              .withAddress(address)
               .withAllPhones(allPhones)
               .withFaxPhone(null)
               .withAllEmails(allEmails)
@@ -138,15 +134,13 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      //String firstname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[2]")).getText();
-      //String lastname = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[1]")).getText();
-      //String allPhones = element.findElement(By.xpath("(//td[@class='center']/following-sibling::td)[5]")).getText();
-
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-      String allPhones = cells.get(5).getText();
+      String address = cells.get(3).getText();
       String allEmails = cells.get(4).getText();;
+      String allPhones = cells.get(5).getText();
+
       contactCache.add(new ContactData()
               .withId(id)
               .withFirstName(firstname)
@@ -155,7 +149,7 @@ public class ContactHelper extends HelperBase {
               .withNickName(null)
               .withTitle(null)
               .withCompany(null)
-              .withAddress(null)
+              .withAddress(address)
               .withAllPhones(allPhones)
               .withFaxPhone(null)
               .withAllEmails(allEmails)
@@ -167,11 +161,15 @@ public class ContactHelper extends HelperBase {
 
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModification(contact.getId());
-    String firstname = wd.findElement(By.name("firstname")).getText();
-    String lastname = wd.findElement(By.xpath("lastname")).getText();
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String email1 = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new ContactData()
             .withId(contact.getId())
@@ -181,14 +179,14 @@ public class ContactHelper extends HelperBase {
             .withNickName(null)
             .withTitle(null)
             .withCompany(null)
-            .withAddress(null)
+            .withAddress(address)
             .withHomePhone(home)
             .withMobilePhone(mobile)
             .withWorkPhone(work)
             .withFaxPhone(null)
-            .withEmail1(null)
-            .withEmail2(null)
-            .withEmail3(null)
+            .withEmail1(email1)
+            .withEmail2(email2)
+            .withEmail3(email3)
             .withGroup(null);
   }
 
@@ -197,7 +195,6 @@ public class ContactHelper extends HelperBase {
     WebElement row = checkbox.findElement(By.xpath("./../.."));
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();
-    //wd.findElement(By.xpath(String.format("//a[@href='edit.php?id=" + id + "']"))).click();
   }
 }
 

@@ -5,7 +5,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -32,7 +31,6 @@ public class ContactModificationTests extends TestBase {
               .withEmail3("email3@email.com")
               .withGroup("test1"));
     }
-
   }
 
   @Test // (enabled = false)
@@ -56,7 +54,6 @@ public class ContactModificationTests extends TestBase {
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
             .withGroup("test1");
-
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
