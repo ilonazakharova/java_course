@@ -112,7 +112,6 @@ public class ContactCreationTests extends TestBase {
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
             .withGroup("test1")});
-
     return list.iterator();
   }
 
@@ -125,11 +124,7 @@ public class ContactCreationTests extends TestBase {
     Contacts after = app.contact().all();
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
-
-
   }
-
-
 
   @Test (enabled = false)
   public void testBadContactCreation() {
@@ -151,12 +146,10 @@ public class ContactCreationTests extends TestBase {
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
             .withGroup("test1");
-
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(before));
-
   }
 
   @Test (enabled = false)
