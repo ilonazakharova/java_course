@@ -1,0 +1,36 @@
+[
+  {
+    "firstName": "Ilona 0",
+    "middleName": "0",
+    "lastName": "Zakharova 0",
+    "nickName": "0",
+    "title": "0",
+    "company": "0",
+    "address": "Belarus, Minsk 0",
+    "homePhone": "+123456789 0",
+    "mobilePhone": "+12345678 0",
+    "workPhone": "+1234567 0",
+    "faxPhone": "0",
+    "email1": "email1@email.com 0",
+    "email2": "email2@email.com 0",
+    "email3": "email3@email.com 0",
+    "group": "test0"
+  },
+  {
+    "firstName": "Ilona 1",
+    "middleName": "1",
+    "lastName": "Zakharova 1",
+    "nickName": "1",
+    "title": "1",
+    "company": "1",
+    "address": "Belarus, Minsk 1",
+    "homePhone": "+123456789 1",
+    "mobilePhone": "+12345678 1",
+    "workPhone": "+1234567 1",
+    "faxPhone": "1",
+    "email1": "email1@email.com 1",
+    "email2": "email2@email.com 1",
+    "email3": "email3@email.com 1",
+    "group": "test1"
+  }
+]
