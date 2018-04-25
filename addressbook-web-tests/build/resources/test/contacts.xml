@@ -1,0 +1,87 @@
+<list>
+  <contact>
+    <firstName>Ilona 0</firstName>
+    <middleName>0</middleName>
+    <lastName>Zakharova 0</lastName>
+    <nickName>0</nickName>
+    <title>0</title>
+    <company>0</company>
+    <address>Belarus, Minsk 0</address>
+    <homePhone>+123456789 0</homePhone>
+    <mobilePhone>+12345678 0</mobilePhone>
+    <workPhone>+1234567 0</workPhone>
+    <faxPhone>0</faxPhone>
+    <email1>email1@email.com 0</email1>
+    <email2>email2@email.com 0</email2>
+    <email3>email3@email.com 0</email3>
+    <group>test1 0</group>
+  </contact>
+  <contact>
+    <firstName>Ilona 1</firstName>
+    <middleName>1</middleName>
+    <lastName>Zakharova 1</lastName>
+    <nickName>1</nickName>
+    <title>1</title>
+    <company>1</company>
+    <address>Belarus, Minsk 1</address>
+    <homePhone>+123456789 1</homePhone>
+    <mobilePhone>+12345678 1</mobilePhone>
+    <workPhone>+1234567 1</workPhone>
+    <faxPhone>1</faxPhone>
+    <email1>email1@email.com 1</email1>
+    <email2>email2@email.com 1</email2>
+    <email3>email3@email.com 1</email3>
+    <group>test1 1</group>
+  </contact>
+  <contact>
+    <firstName>Ilona 2</firstName>
+    <middleName>2</middleName>
+    <lastName>Zakharova 2</lastName>
+    <nickName>2</nickName>
+    <title>2</title>
+    <company>2</company>
+    <address>Belarus, Minsk 2</address>
+    <homePhone>+123456789 2</homePhone>
+    <mobilePhone>+12345678 2</mobilePhone>
+    <workPhone>+1234567 2</workPhone>
+    <faxPhone>2</faxPhone>
+    <email1>email1@email.com 2</email1>
+    <email2>email2@email.com 2</email2>
+    <email3>email3@email.com 2</email3>
+    <group>test1 2</group>
+  </contact>
+  <contact>
+    <firstName>Ilona 3</firstName>
+    <middleName>3</middleName>
+    <lastName>Zakharova 3</lastName>
+    <nickName>3</nickName>
+    <title>3</title>
+    <company>3</company>
+    <address>Belarus, Minsk 3</address>
+    <homePhone>+123456789 3</homePhone>
+    <mobilePhone>+12345678 3</mobilePhone>
+    <workPhone>+1234567 3</workPhone>
+    <faxPhone>3</faxPhone>
+    <email1>email1@email.com 3</email1>
+    <email2>email2@email.com 3</email2>
+    <email3>email3@email.com 3</email3>
+    <group>test1 3</group>
+  </contact>
+  <contact>
+    <firstName>Ilona 4</firstName>
+    <middleName>4</middleName>
+    <lastName>Zakharova 4</lastName>
+    <nickName>4</nickName>
+    <title>4</title>
+    <company>4</company>
+    <address>Belarus, Minsk 4</address>
+    <homePhone>+123456789 4</homePhone>
+    <mobilePhone>+12345678 4</mobilePhone>
+    <workPhone>+1234567 4</workPhone>
+    <faxPhone>4</faxPhone>
+    <email1>email1@email.com 4</email1>
+    <email2>email2@email.com 4</email2>
+    <email3>email3@email.com 4</email3>
+    <group>test1 4</group>
+  </contact>
+</list>
