@@ -47,7 +47,7 @@ public class ContactDataGenerator {
       System.out.println("Unrecognized format " + format);
     }
   }
-  
+
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
     try (Writer writer = new FileWriter(file)) {
