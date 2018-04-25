@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactDataGenerator {
-
-
   @Parameter(names = "-c", description =  "Contact count")
   public int count;
 
@@ -25,7 +22,6 @@ public class ContactDataGenerator {
 
   @Parameter (names = "-d", description = "Data format")
   public String format;
-
 
   public static void main (String[] args) throws IOException {
     ContactDataGenerator generator = new ContactDataGenerator();
@@ -51,8 +47,7 @@ public class ContactDataGenerator {
       System.out.println("Unrecognized format " + format);
     }
   }
-
-
+  
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
     try (Writer writer = new FileWriter(file)) {
@@ -86,7 +81,6 @@ public class ContactDataGenerator {
       writer.write(xml);
     }
   }
-
 
   private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
