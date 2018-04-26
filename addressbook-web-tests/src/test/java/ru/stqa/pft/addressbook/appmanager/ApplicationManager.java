@@ -22,7 +22,7 @@ public class ApplicationManager {
   private ContactHelper contactHelper;
   private final Properties properties;
 
-  public ApplicationManager(String browser) throws IOException {
+  public ApplicationManager(String browser) {
     this.browser = browser;
     properties = new Properties();
   }
