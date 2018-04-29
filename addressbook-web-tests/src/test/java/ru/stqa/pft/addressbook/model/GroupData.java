@@ -85,9 +85,7 @@ public class GroupData {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     GroupData groupData = (GroupData) o;
-
    if (id != groupData.id) return false;
    return name != null ? name.equals(groupData.name) : groupData.name == null;
   }
