@@ -25,7 +25,6 @@ public class GroupData {
   @Type(type = "text")
   private String name;
 
-
   @Expose
   @Column(name = "group_header")
   @Type(type = "text")
