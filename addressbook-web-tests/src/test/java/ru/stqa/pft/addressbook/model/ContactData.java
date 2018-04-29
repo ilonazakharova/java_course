@@ -22,6 +22,7 @@ public class ContactData {
   @Expose
   @Column(name = "firstname")
   private String firstName;
+
   @Expose
   private String middleName;
 
@@ -43,6 +44,7 @@ public class ContactData {
 
   @Expose
   @Column(name = "address")
+  @Type(type = "text")
   private String address;
 
   @Expose
@@ -62,18 +64,22 @@ public class ContactData {
 
   @Expose
   @Column(name = "fax")
+  @Type(type = "text")
   private String faxPhone;
 
   @Expose
   @Column(name = "email")
+  @Type(type = "text")
   private String email1;
 
   @Expose
   @Column(name = "email2")
+  @Type(type = "text")
   private String email2;
 
   @Expose
   @Column(name = "email3")
+  @Type(type = "text")
   private String email3;
 
   @Expose
