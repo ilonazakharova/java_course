@@ -29,7 +29,7 @@ public class ContactModificationTests extends TestBase {
               .withEmail1("email1@email.com")
               .withEmail2("email2@email.com")
               .withEmail3("email3@email.com")
-              .withGroup("test1"));
+              .withGroup(null));
     }
   }
 
@@ -40,20 +40,20 @@ public class ContactModificationTests extends TestBase {
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId())
             .withFirstName("Ilona")
-            .withMiddleName(null)
+            .withMiddleName("")
             .withLastName("Zakharova")
-            .withNickName(null)
-            .withTitle(null)
-            .withCompany(null)
+            .withNickName("")
+            .withTitle("")
+            .withCompany("")
             .withAddress("Belarus, Gomel")
             .withHomePhone("0123456789")
             .withMobilePhone("012345678")
             .withWorkPhone("01234567")
-            .withFaxPhone(null)
+            .withFaxPhone("")
             .withEmail1("email1@email.com")
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
-            .withGroup("test1");
+            .withGroup("");
     app.goTo().contactPage();
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));

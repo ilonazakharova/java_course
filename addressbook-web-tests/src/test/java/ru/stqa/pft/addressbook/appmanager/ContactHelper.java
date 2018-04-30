@@ -154,7 +154,9 @@ public class ContactHelper extends HelperBase {
               .withAllPhones(allPhones)
               .withFaxPhone(null)
               .withAllEmails(allEmails)
-              .withGroup(null));
+              .withGroup(null)
+      )
+      ;
     }
     return new Contacts(contactCache);
   }
@@ -187,7 +189,8 @@ public class ContactHelper extends HelperBase {
             .withEmail1(email1)
             .withEmail2(email2)
             .withEmail3(email3)
-            .withGroup(null);
+            .withGroup(null)
+            ;
   }
 
   private void initContactModificationId(int id) {
