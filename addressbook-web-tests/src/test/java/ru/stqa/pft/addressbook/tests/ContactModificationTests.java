@@ -29,7 +29,8 @@ public class ContactModificationTests extends TestBase {
               .withEmail1("email1@email.com")
               .withEmail2("email2@email.com")
               .withEmail3("email3@email.com")
-              .withGroup(null));
+              //.withGroup(null)
+      );
     }
   }
 
@@ -53,7 +54,8 @@ public class ContactModificationTests extends TestBase {
             .withEmail1("email1@email.com")
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
-            .withGroup("");
+            //.withGroup("")
+            ;
     app.goTo().contactPage();
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
