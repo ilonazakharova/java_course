@@ -23,6 +23,7 @@ public class ContactData {
   private String firstName;
 
   @Expose
+  @Column(name = "middlename")
   private String middleName;
 
   @Expose
@@ -93,19 +94,32 @@ public class ContactData {
   @Transient
   private String allEmails;
 
+  @Transient
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
+
   @Override
   public String toString() {
     return "ContactData{" +
             "id=" + id +
             ", firstName='" + firstName + '\'' +
+            ", middleName='" + middleName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", nickName='" + nickName + '\'' +
+            ", title='" + title + '\'' +
+            ", company='" + company + '\'' +
+            ", address='" + address + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", mobilePhone='" + mobilePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
+            ", faxPhone='" + faxPhone + '\'' +
+            ", email1='" + email1 + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            ", group='" + group + '\'' +
             '}';
   }
-
-  @Column(name = "photo")
-  @Type(type = "text")
-  private String photo;
-
 
   public File getPhoto() {
     return new File(photo);
@@ -309,4 +323,26 @@ public class ContactData {
     return Objects.hash(id, firstName, middleName, lastName, nickName, title, company, address, homePhone, mobilePhone, workPhone, faxPhone, email1, email2, email3, group);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

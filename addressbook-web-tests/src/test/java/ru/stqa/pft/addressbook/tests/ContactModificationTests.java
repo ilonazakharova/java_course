@@ -56,7 +56,6 @@ public class ContactModificationTests extends TestBase {
             .withEmail3("email3@email.com")
             .withGroup("test1");
     app.goTo().contactPage();
-
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();

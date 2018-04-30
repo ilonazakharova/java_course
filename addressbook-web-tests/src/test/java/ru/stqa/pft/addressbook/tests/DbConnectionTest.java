@@ -1,7 +1,9 @@
 package ru.stqa.pft.addressbook.tests;
+
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
+
 import java.sql.*;
 
 public class DbConnectionTest {
@@ -25,10 +27,15 @@ public class DbConnectionTest {
       st.close();
       conn.close();
       System.out.println(groups);
-    } catch (SQLException ex) {
+    }
+    catch (SQLException ex) {
     System.out.println("SQLException: " + ex.getMessage());
     System.out.println("SQLState: " + ex.getSQLState());
     System.out.println("VendorError: " + ex.getErrorCode());
     }
+
+
   }
+
+
 }
