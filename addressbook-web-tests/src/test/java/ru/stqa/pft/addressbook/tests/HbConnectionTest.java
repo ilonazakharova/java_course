@@ -8,12 +8,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-
 import java.util.List;
 
 public class HbConnectionTest {
-
-
   private SessionFactory sessionFactory;
 
   @BeforeClass

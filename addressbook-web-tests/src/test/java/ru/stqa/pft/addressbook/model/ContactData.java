@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
-
 @XStreamAlias("contact")
 @Entity
 @Table(name = "addressbook")
@@ -294,7 +293,6 @@ public class ContactData {
     return this;
   }
 
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -320,8 +318,23 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-
-    return Objects.hash(id, firstName, middleName, lastName, nickName, title, company, address, homePhone, mobilePhone, workPhone, faxPhone, email1, email2, email3, group);
+    return Objects.hash(
+            id,
+            firstName,
+            middleName,
+            lastName,
+            nickName,
+            title,
+            company,
+            address,
+            homePhone,
+            mobilePhone,
+            workPhone,
+            faxPhone,
+            email1,
+            email2,
+            email3,
+            group);
   }
 }
 
