@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -90,33 +91,37 @@ public class ContactCreationTests extends TestBase {
 
   @Test(enabled = false)
   public void testContactCreation() {
+    Groups groups = app.db().groups();
+    File photo = new File("src/test/resources/photo.jpg");
+    ContactData newContact = new ContactData()
+            .withFirstName("Ilona")
+            .withMiddleName("")
+            .withLastName("Zakharova")
+            .withNickName("")
+            .withTitle("")
+            .withCompany("")
+            .withAddress("Belarus, Minsk")
+            .withHomePhone("+123456789")
+            .withMobilePhone("+12345678")
+            .withWorkPhone("+1234567")
+            .withFaxPhone("")
+            .withEmail1("email1@email.com")
+            .withEmail2("email2@email.com")
+            .withEmail3("email3@email.com")
+            //.withGroup("test1")
+            .inGroup(groups.iterator().next());
+            //.withPhoto(photo)
+
     app.contact().homePage();
     Contacts before = app.db().contacts();
-    File photo = new File("src/test/resources/photo.jpg");
-    ContactData contact = new ContactData()
-          .withFirstName("Ilona")
-          .withMiddleName("")
-          .withLastName("Zakharova")
-          .withNickName("")
-          .withTitle("")
-          .withCompany("")
-          .withAddress("Belarus, Minsk")
-          .withHomePhone("+123456789")
-          .withMobilePhone("+12345678")
-          .withWorkPhone("+1234567")
-          .withFaxPhone("")
-          .withEmail1("email1@email.com")
-          .withEmail2("email2@email.com")
-          .withEmail3("email3@email.com")
-          //.withGroup("test1")
-          //.withPhoto(photo)
-          ;
+
+
     app.goTo().contactPage();
-    app.contact().create(contact);
+    app.contact().create(newContact);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo
-           (before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+           (before.withAdded(newContact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     verifyContactListInUI();
     }
 
@@ -139,6 +144,7 @@ public class ContactCreationTests extends TestBase {
             .withEmail1("email1@email.com")
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
+            //.inGroup(groups.iterator().next)
             //.withGroup("test1")
     ;
     app.goTo().contactPage();

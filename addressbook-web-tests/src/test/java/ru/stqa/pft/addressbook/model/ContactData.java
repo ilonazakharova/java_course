@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.io.File;
 import java.util.HashSet;
@@ -100,8 +101,8 @@ public class ContactData {
   @Type(type = "text")
   private String photo;
 
-  @ManyToMany
-  @JoinTable(name = "adrress_in_groups",
+  @ManyToMany (fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
           joinColumns = @JoinColumn(name = "id"),
           inverseJoinColumns = @JoinColumn(name = "group_id"))
   private Set<GroupData> groups = new HashSet<GroupData>();
@@ -337,6 +338,12 @@ public class ContactData {
             email2,
             email3);
     //перегенерировать для домашнего задания 16, чтобы были включены группы
+  }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+
   }
 }
 
