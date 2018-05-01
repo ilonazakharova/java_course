@@ -27,7 +27,7 @@ public class HttpSession {
 
   public boolean login(String username, String password) throws IOException {
     HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login.php");
-    List<NameValuePair> params = new ArrayList<~>();
+    List<NameValuePair> params = new ArrayList<>();
     params.add(new BasicNameValuePair("username", username));
     params.add(new BasicNameValuePair("password", password));
     params.add(new BasicNameValuePair("secure_session", "on"));
@@ -36,11 +36,12 @@ public class HttpSession {
     CloseableHttpResponse response = httpclient.execute(post);
     String body = getTextFrom(response);
     return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+    //return body.contains(String.format("<a href=\"mantisbt-2.14.0/account_page.php/">%s</a>", username));
   }
 
   private String getTextFrom(CloseableHttpResponse response) throws IOException {
     try {
-      return EntityUtils.toString(response.getEntity()):
+      return EntityUtils.toString(response.getEntity());
     } finally {
       response.close();
     }
@@ -51,6 +52,6 @@ public class HttpSession {
     CloseableHttpResponse response = httpclient.execute(get);
     String body = getTextFrom(response);
     return body.contains(String.format("<span class=\"italic\">%s</span>", username));
-
+    //return body.contains(String.format("<a href=\"mantisbt-2.14.0/account_page.php/">%s</a>", username));
   }
 }
