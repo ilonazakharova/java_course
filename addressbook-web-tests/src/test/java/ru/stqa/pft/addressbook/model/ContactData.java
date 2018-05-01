@@ -130,7 +130,7 @@ public class ContactData {
     this.photo = photo.getPath();
     return this;
   }
-  
+
   public String getAllPhones() {
     return allPhones;
   }

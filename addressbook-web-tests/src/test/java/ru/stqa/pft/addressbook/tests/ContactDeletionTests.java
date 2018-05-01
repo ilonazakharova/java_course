@@ -29,7 +29,7 @@ public class ContactDeletionTests extends TestBase {
                       .withEmail1("email1@email.com")
                       .withEmail2("email2@email.com")
                       .withEmail3("email3@email.com")
-              //.withGroup(null)
+                      //.withGroup(null)
       );
     }
   }
@@ -44,8 +44,6 @@ public class ContactDeletionTests extends TestBase {
         assertThat(app.contact().count(), equalTo(before.size() - 1));
         Contacts after = app.db().contacts();
         assertThat(after, equalTo(before.without(deletedContact)));
-
-
+        verifyContactListInUI();
       }
-
   }
