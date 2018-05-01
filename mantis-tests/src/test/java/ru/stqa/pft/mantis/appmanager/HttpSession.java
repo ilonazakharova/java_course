@@ -6,10 +6,10 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import sun.net.www.http.HttpClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class HttpSession {
 
   public HttpSession(ApplicationManager app) {
     this.app = app;
-    httpclient = HttpClient.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
+    httpclient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
   }
 
   public boolean login(String username, String password) throws IOException {
