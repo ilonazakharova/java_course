@@ -6,7 +6,9 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -81,11 +83,11 @@ public class ContactData {
   @Type(type = "text")
   private String email3;
 
-  @Expose
-  @Transient
- @Column(name = "group_name")
-  @Type(type = "text")
-  private String group;
+  //@Expose
+  //@Transient
+ //@Column(name = "group_name")
+  //@Type(type = "text")
+  //private String group;
 
   @Transient
   private String allPhones;
@@ -97,6 +99,12 @@ public class ContactData {
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @ManyToMany
+  @JoinTable(name = "adrress_in_groups",
+          joinColumns = @JoinColumn(name = "id"),
+          inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   @Override
   public String toString() {
@@ -208,11 +216,6 @@ public class ContactData {
     return email3;
   }
 
-  public String getGroup() {
-    return group;
-  }
-
-
   public ContactData withId(int id) {
     this.id = id;
     return this;
@@ -288,9 +291,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   @Override

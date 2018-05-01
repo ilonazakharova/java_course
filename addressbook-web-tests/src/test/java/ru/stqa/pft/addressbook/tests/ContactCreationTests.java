@@ -139,7 +139,7 @@ public class ContactCreationTests extends TestBase {
             .withEmail1("email1@email.com")
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
-            .withGroup("test1")
+            //.withGroup("test1")
     ;
     app.goTo().contactPage();
     app.contact().create(contact);

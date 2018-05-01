@@ -2,10 +2,10 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class ContactHelper extends HelperBase {
     attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
-      new Select(wd.findElement(name("new_group"))).selectByVisibleText(contactData.getGroup());
+     // new Select(wd.findElement(name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -120,7 +120,8 @@ public class ContactHelper extends HelperBase {
               .withAllPhones(allPhones)
               .withFaxPhone(null)
               .withAllEmails(allEmails)
-              .withGroup(null));
+              //.withGroup(null)
+      );
     }
     return contacts;
   }
@@ -154,7 +155,7 @@ public class ContactHelper extends HelperBase {
               .withAllPhones(allPhones)
               .withFaxPhone(null)
               .withAllEmails(allEmails)
-              .withGroup(null)
+              //.withGroup(null)
       )
       ;
     }
@@ -189,7 +190,7 @@ public class ContactHelper extends HelperBase {
             .withEmail1(email1)
             .withEmail2(email2)
             .withEmail3(email3)
-            .withGroup(null)
+            //.withGroup(null)
             ;
   }
 
