@@ -117,7 +117,9 @@ public class ContactData {
             ", email2='" + email2 + '\'' +
             ", email3='" + email3 + '\'' +
             '}';
+    //перегенерировать для домашнего задания 16, чтобы были включены группы
   }
+
 
   public File getPhoto() {
     if (photo != null) { return new File(photo);
@@ -128,8 +130,7 @@ public class ContactData {
     this.photo = photo.getPath();
     return this;
   }
-
-
+  
   public String getAllPhones() {
     return allPhones;
   }
@@ -312,6 +313,7 @@ public class ContactData {
             Objects.equals(email1, that.email1) &&
             Objects.equals(email2, that.email2) &&
             Objects.equals(email3, that.email3);
+            //перегенерировать для домашнего задания 16, чтобы были включены группы
   }
 
   @Override
@@ -332,6 +334,7 @@ public class ContactData {
             email1,
             email2,
             email3);
+    //перегенерировать для домашнего задания 16, чтобы были включены группы
   }
 }
 
