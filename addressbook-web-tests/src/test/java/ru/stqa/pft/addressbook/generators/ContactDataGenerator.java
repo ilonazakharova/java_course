@@ -68,7 +68,8 @@ public class ContactDataGenerator {
                 contact.getEmail2(),
                 contact.getEmail3(),
                 contact.getGroup(),
-                contact.getPhoto()));
+                contact.getPhoto()
+                ));
       }
     }
   }
@@ -111,7 +112,8 @@ public class ContactDataGenerator {
               contact.getEmail2(),
               contact.getEmail3(),
               contact.getGroup(),
-              contact.getPhoto()));
+              contact.getPhoto()
+      ));
     }
     writer.close();
   }

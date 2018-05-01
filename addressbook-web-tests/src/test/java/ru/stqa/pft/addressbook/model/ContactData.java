@@ -83,7 +83,7 @@ public class ContactData {
 
   @Expose
   @Transient
-  @Column(name = "group_name")
+ @Column(name = "group_name")
   @Type(type = "text")
   private String group;
 
@@ -116,7 +116,6 @@ public class ContactData {
             ", email1='" + email1 + '\'' +
             ", email2='" + email2 + '\'' +
             ", email3='" + email3 + '\'' +
-            ", group='" + group + '\'' +
             '}';
   }
 
@@ -312,8 +311,7 @@ public class ContactData {
             Objects.equals(faxPhone, that.faxPhone) &&
             Objects.equals(email1, that.email1) &&
             Objects.equals(email2, that.email2) &&
-            Objects.equals(email3, that.email3) &&
-            Objects.equals(group, that.group);
+            Objects.equals(email3, that.email3);
   }
 
   @Override
@@ -333,8 +331,7 @@ public class ContactData {
             faxPhone,
             email1,
             email2,
-            email3,
-            group);
+            email3);
   }
 }
 
