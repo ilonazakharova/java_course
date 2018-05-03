@@ -6,7 +6,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.HttpSessionId;
 
 import java.io.File;
 import java.io.FileReader;
@@ -18,25 +17,23 @@ public class ApplicationManager {
   private WebDriver wd;
   private String browser;
   private RegistrationHelper registrationHelper;
+  private final Properties properties;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
     properties = new Properties();
   }
 
-
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
   }
-
 
   public void stop() {
     if (wd != null) {
       wd.quit();
     }
   }
-
 
   public HttpSession newSession() {
     return new HttpSession(this);
@@ -61,7 +58,6 @@ public class ApplicationManager {
         wd = new ChromeDriver();
       } else if (browser.equals(BrowserType.IE))
         wd = new InternetExplorerDriver();
-
 
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
