@@ -56,9 +56,9 @@ public class ApplicationManager {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
       } else if (browser.equals(BrowserType.CHROME)) {
         wd = new ChromeDriver();
-      } else if (browser.equals(BrowserType.IE))
+      } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
-
+      }
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
     }
