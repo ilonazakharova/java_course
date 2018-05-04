@@ -11,3 +11,7 @@ dependencies {
     compile 'org.testng:testng:6.14.2'
 
 }
+
+test {
+	useTestNG()
+}

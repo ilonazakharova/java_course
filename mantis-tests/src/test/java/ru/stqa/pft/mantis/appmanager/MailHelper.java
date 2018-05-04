@@ -17,6 +17,7 @@ public class MailHelper {
     this.app = app;
     wiser = new Wiser();
   }
+  
 
   public List<MailMessage> waitForMail(int count, long timeout) throws MessagingException, IOException {
     long start = System.currentTimeMillis(); //запомнить текущее время
@@ -33,6 +34,7 @@ public class MailHelper {
     throw new Error("No mail :(");
   }
 
+
   private MailMessage toModelMail(WiserMessage m) {
     try {
       MimeMessage mm = m.getMimeMessage();
@@ -45,6 +47,7 @@ public class MailHelper {
       return null;
     }
   }
+
 
   public void start() {wiser.start();}
   public void stop() {wiser.stop();}
