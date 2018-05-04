@@ -21,14 +21,16 @@ public class RegistrationTests extends TestBase{
 
   @Test
   public void testRegistration() throws IOException, MessagingException {
-    String username = "11user";
+    Long longtime = System.currentTimeMillis();
+    String user = String.format("user%d", longtime);
     String password = "password";
-    String email = "11user@localhost";
-    app.registration().start(username, email);
-    List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+    String email = String.format("%s@localhost.localhost", user);
+
+    app.registration().start(user, email);
+    List<MailMessage> mailMessages = app.mail().waitForMail(2, 1000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.registration().finish(confirmationLink, password);
-    assertTrue(app.newSession().login(username, password));
+    assertTrue(app.newSession().login(user, password));
   }
 
   private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
