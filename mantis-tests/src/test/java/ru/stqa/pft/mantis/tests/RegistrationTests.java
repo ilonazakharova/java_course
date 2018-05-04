@@ -1,7 +1,6 @@
 package ru.stqa.pft.mantis.tests;
 
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
@@ -24,6 +23,9 @@ public class RegistrationTests extends TestBase{
     String username = "user3";
     String password = "password";
     String email = "user3@localhost";
+
+
+
     app.registration().start(username, email);
     List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
@@ -37,7 +39,7 @@ public class RegistrationTests extends TestBase{
     return regex.getText(mailMessage.text);
   }
 
-  @AfterMethod (alwaysRun = true)
+  //@AfterMethod (alwaysRun = true)
   public void stopMailServer() {
     app.mail().stop();
   }
