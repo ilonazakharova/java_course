@@ -24,9 +24,6 @@ public class RegistrationTests extends TestBase{
     String username = "user3";
     String password = "password";
     String email = "user3@localhost";
-
-
-
     app.registration().start(username, email);
     List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
