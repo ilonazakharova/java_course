@@ -36,10 +36,9 @@ public class GroupData {
 
   @ManyToMany (mappedBy = "groups")
   private Set<ContactData> contacts = new HashSet<ContactData>();
-
-  public Contacts getContacts() {
-    return new Contacts(contacts);
-  }
+  @JoinTable (name = "groups_list",
+              joinColumns = @JoinColumn (name = "group_id"),
+              inverseJoinColumns = @JoinColumn(name = "id"))
 
 
   public int getId() {
