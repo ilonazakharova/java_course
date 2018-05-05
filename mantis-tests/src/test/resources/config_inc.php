@@ -7,7 +7,7 @@ $g_db_password = '';
 $g_signup_use_captcha = OFF;
 $g_phpmailer_method = phpMailer_method;
 $g_smtp_host = 'IlonaZakharova';
-$g_smtp_port = 1025;
+$g_smtp_port = 25;
 
 
 

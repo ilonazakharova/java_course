@@ -6,7 +6,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -86,6 +85,6 @@ public class ApplicationManager {
     if (jamesHelper == null) {
       jamesHelper = new JamesHelper(this);
     }
-    return jamesHelper;
+    return jamesHelper; //ленивая инициализация
   }
 }
