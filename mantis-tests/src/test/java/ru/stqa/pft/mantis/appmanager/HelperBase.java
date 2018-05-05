@@ -36,6 +36,9 @@ public class HelperBase {
     }
   }
 
+
+
+
   //public boolean isAllertPresent() {
     //try {
       //wd.switchTo().alert();

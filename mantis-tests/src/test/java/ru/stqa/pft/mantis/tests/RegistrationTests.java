@@ -28,7 +28,7 @@ public class RegistrationTests extends TestBase{
     app.registration().start(user, email);
     //List<MailMessage> mailMessages = app.mail().waitForMail(2, 1000);
     //получаем письмо из внешнего почтового сервера
-    List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000); // где должен быть метод waitForMail - в JamesHelper или в MailHelper
+    List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000); // где должен быть метод waitForMail - в JamesHelper
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.registration().finish(confirmationLink, password);
     assertTrue(app.newSession().login(user, password));

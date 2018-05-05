@@ -5,6 +5,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -12,6 +14,7 @@ public class ContactModificationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
+    Groups groups = app.db().groups();
     if (app.db().contacts().size() == 0) {
       app.goTo().contactPage();
       app.contact().create(new ContactData()
@@ -29,7 +32,7 @@ public class ContactModificationTests extends TestBase {
               .withEmail1("email1@email.com")
               .withEmail2("email2@email.com")
               .withEmail3("email3@email.com")
-              //.withGroup(null)
+              .inGroup(groups.iterator().next())
       );
     }
   }
@@ -38,6 +41,7 @@ public class ContactModificationTests extends TestBase {
   public void testContactModification() {
     Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
+    Groups groups = app.db().groups();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId())
             .withFirstName("Ilona")
@@ -54,7 +58,7 @@ public class ContactModificationTests extends TestBase {
             .withEmail1("email1@email.com")
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
-            //.withGroup("")
+            .inGroup(groups.iterator().next())
             ;
     app.goTo().contactPage();
     app.contact().modify(contact);

@@ -20,6 +20,8 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private UpdateHelper updateHelper;
+  private NavigationHelper navigateHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -87,4 +89,19 @@ public class ApplicationManager {
     }
     return jamesHelper; //ленивая инициализация
   }
+
+  public UpdateHelper updateHelper() {
+    if (updateHelper == null) {
+      updateHelper = new UpdateHelper(this);
+    }
+    return updateHelper;
+  }
+
+  public NavigationHelper navigate() {
+    if (navigateHelper == null) {
+      navigateHelper = new NavigationHelper(this);
+    }
+    return navigateHelper;
+  }
+
 }

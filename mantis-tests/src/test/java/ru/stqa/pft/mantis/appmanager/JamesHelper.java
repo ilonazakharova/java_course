@@ -70,7 +70,7 @@ public class JamesHelper {
     write("");
 
     //2nd attempt must be successful
-    readUntil("Login id:");
+    readUntil("Login id:");  //чтение, см.initTelnetSession. Tекст, который пишет сервер
     write("root");
     readUntil("Password:");
     write("root");
