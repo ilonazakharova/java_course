@@ -21,14 +21,14 @@ public class RegistrationTests extends TestBase{
     Long longtime = System.currentTimeMillis();
     String user = String.format("user%d", longtime);
     String password = "password";
-    String email = String.format("%s@localhost.localhost", user);
+    String email = String.format("%s@localhost", user);
     //создаем пользователя на почтовом сервере
     app.james().createUser(user, password);
     // выполняется 1-ая часть регистрации, должны получить письмо
     app.registration().start(user, email);
     //List<MailMessage> mailMessages = app.mail().waitForMail(2, 1000);
     //получаем письмо из внешнего почтового сервера
-    List<MailMessage> mailMessages = app.james().waitForMail(user, password, 360000); // где должен быть метод waitForMail - в JamesHelper или в MailHelper
+    List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000); // где должен быть метод waitForMail - в JamesHelper или в MailHelper
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.registration().finish(confirmationLink, password);
     assertTrue(app.newSession().login(user, password));
