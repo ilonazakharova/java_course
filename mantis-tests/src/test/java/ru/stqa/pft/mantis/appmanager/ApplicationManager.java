@@ -21,7 +21,7 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
   private UpdateHelper updateHelper;
-  private NavigationHelper navigateHelper;
+  private NavigationHelper navigationHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -98,10 +98,10 @@ public class ApplicationManager {
   }
 
   public NavigationHelper navigate() {
-    if (navigateHelper == null) {
-      navigateHelper = new NavigationHelper(this);
+    if (navigationHelper == null) {
+      navigationHelper = new NavigationHelper(this);
     }
-    return navigateHelper;
+    return navigationHelper;
   }
 
 }

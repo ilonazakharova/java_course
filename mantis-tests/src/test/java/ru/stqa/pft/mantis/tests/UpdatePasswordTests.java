@@ -1,8 +1,6 @@
 package ru.stqa.pft.mantis.tests;
 
 import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMessage;
@@ -14,7 +12,7 @@ import static org.testng.Assert.assertTrue;
 
 public class UpdatePasswordTests extends TestBase {
 
-  @BeforeMethod //- отключаем, т.к. будем использовать отдельно стоящий сервер, а не встроенный
+  //@BeforeMethod //- отключаем, т.к. будем использовать отдельно стоящий сервер, а не встроенный
   public void startMailServer() {
     app.mail().start();
   }
@@ -31,8 +29,8 @@ public class UpdatePasswordTests extends TestBase {
     app.navigate().login(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword")); //авторизоваться в мантис, как администратор
     app.updateHelper().changePassword(user);
 
-    //List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
-    List<MailMessage> mailMessages = app.mail().waitForMail(2, 1000);
+    List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
+   // List<MailMessage> mailMessages = app.mail().waitForMail(2, 1000);
 
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.updateHelper().confirmPassword(confirmationLink, newpassword); //подтверждаем смену пароля
@@ -46,7 +44,7 @@ public class UpdatePasswordTests extends TestBase {
   }
 
 
-  @AfterMethod(alwaysRun = true) //- отключаем, т.к. будем использовать отдельно стоящий сервер, а не встроенный
+  //@AfterMethod(alwaysRun = true) //- отключаем, т.к. будем использовать отдельно стоящий сервер, а не встроенный
   public void stopMailServer() {
     app.mail().stop();
   }
