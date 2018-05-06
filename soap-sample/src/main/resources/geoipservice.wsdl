@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://buzzbuzhome.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://buzzbuzhome.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://buzzbuzhome.com/">
+      <s:element name="AddLocationHit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LocationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLocationHitResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ipAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserLocationResult" type="tns:BBHLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BBHLocation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LocationID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="SearchText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLocations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="restrictToCity" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationsResult" type="tns:ArrayOfBBHLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBBHLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BBHLocation" nillable="true" type="tns:BBHLocation" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGeoLocations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prefixText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="contextKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGeoLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGeoLocationsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGeoLocationsHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prefixText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="contextKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGeoLocationsHeaderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGeoLocationsHeaderResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddLocationHitSoapIn">
+    <wsdl:part name="parameters" element="tns:AddLocationHit" />
+  </wsdl:message>
+  <wsdl:message name="AddLocationHitSoapOut">
+    <wsdl:part name="parameters" element="tns:AddLocationHitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserLocation" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocations" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGeoLocationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGeoLocations" />
+  </wsdl:message>
+  <wsdl:message name="GetGeoLocationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGeoLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGeoLocationsHeaderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGeoLocationsHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetGeoLocationsHeaderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGeoLocationsHeaderResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GeoIPSoap">
+    <wsdl:operation name="AddLocationHit">
+      <wsdl:input message="tns:AddLocationHitSoapIn" />
+      <wsdl:output message="tns:AddLocationHitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLocation">
+      <wsdl:input message="tns:GetUserLocationSoapIn" />
+      <wsdl:output message="tns:GetUserLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <wsdl:input message="tns:GetLocationsSoapIn" />
+      <wsdl:output message="tns:GetLocationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoLocations">
+      <wsdl:input message="tns:GetGeoLocationsSoapIn" />
+      <wsdl:output message="tns:GetGeoLocationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoLocationsHeader">
+      <wsdl:input message="tns:GetGeoLocationsHeaderSoapIn" />
+      <wsdl:output message="tns:GetGeoLocationsHeaderSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GeoIPSoap" type="tns:GeoIPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddLocationHit">
+      <soap:operation soapAction="http://buzzbuzhome.com/AddLocationHit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLocation">
+      <soap:operation soapAction="http://buzzbuzhome.com/GetUserLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <soap:operation soapAction="http://buzzbuzhome.com/GetLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoLocations">
+      <soap:operation soapAction="http://buzzbuzhome.com/GetGeoLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoLocationsHeader">
+      <soap:operation soapAction="http://buzzbuzhome.com/GetGeoLocationsHeader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GeoIPSoap12" type="tns:GeoIPSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddLocationHit">
+      <soap12:operation soapAction="http://buzzbuzhome.com/AddLocationHit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLocation">
+      <soap12:operation soapAction="http://buzzbuzhome.com/GetUserLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <soap12:operation soapAction="http://buzzbuzhome.com/GetLocations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoLocations">
+      <soap12:operation soapAction="http://buzzbuzhome.com/GetGeoLocations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeoLocationsHeader">
+      <soap12:operation soapAction="http://buzzbuzhome.com/GetGeoLocationsHeader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GeoIP">
+    <wsdl:port name="GeoIPSoap" binding="tns:GeoIPSoap">
+      <soap:address location="https://www.buzzbuzzhome.com/GeoLocation/GeoLocation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GeoIPSoap12" binding="tns:GeoIPSoap12">
+      <soap12:address location="https://www.buzzbuzzhome.com/GeoLocation/GeoLocation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

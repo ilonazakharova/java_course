@@ -9,11 +9,11 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.Groups;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +24,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactCreationTests extends TestBase {
 
   public Iterator<Object[]> validContactsFromXml() throws IOException {
+    //List<Object[]> list = new ArrayList<Object[]>();
+    //GroupData().withName("test1").withHeader("header1").withFooter("footer1")});
     try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")))) {
       String xml = "";
       String line = reader.readLine();
@@ -40,6 +42,7 @@ public class ContactCreationTests extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validContactsFromJson() throws IOException {
+    List<Object[]> list = new ArrayList<Object[]>();
     try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
       String json = "";
       String line = reader.readLine();
@@ -56,6 +59,7 @@ public class ContactCreationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
+    Groups groups = app.db().groups();
     if (app.db().contacts().size() == 0) {
       app.goTo().contactPage();
       app.contact().create(new ContactData()
@@ -74,9 +78,15 @@ public class ContactCreationTests extends TestBase {
                       .withEmail2("email2@email.com")
                       .withEmail3("email3@email.com")
                       //.withGroup(null)
+                     .inGroup(groups.iterator().next())
       );
     }
   }
+
+
+
+
+
 
   @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) {
@@ -111,11 +121,8 @@ public class ContactCreationTests extends TestBase {
             //.withGroup("test1")
             .inGroup(groups.iterator().next());
             //.withPhoto(photo)
-
     app.contact().homePage();
     Contacts before = app.db().contacts();
-
-
     app.goTo().contactPage();
     app.contact().create(newContact);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
@@ -129,6 +136,7 @@ public class ContactCreationTests extends TestBase {
   public void testBadContactCreation() {
     app.contact().homePage();
     Contacts before = app.db().contacts();
+    Groups groups = app.db().groups();
     ContactData contact = new ContactData()
             .withFirstName("Ilona'")
             .withMiddleName("")
@@ -144,9 +152,8 @@ public class ContactCreationTests extends TestBase {
             .withEmail1("email1@email.com")
             .withEmail2("email2@email.com")
             .withEmail3("email3@email.com")
-            //.inGroup(groups.iterator().next)
-            //.withGroup("test1")
-    ;
+            .inGroup(groups.iterator().next());
+            //.withGroup("test1");
     app.goTo().contactPage();
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size()));

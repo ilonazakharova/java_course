@@ -84,12 +84,6 @@ public class ContactData {
   @Type(type = "text")
   private String email3;
 
-  //@Expose
-  //@Transient
- //@Column(name = "group_name")
-  //@Type(type = "text")
-  //private String group;
-
   @Transient
   private String allPhones;
 
@@ -341,7 +335,7 @@ public class ContactData {
   }
 
   public ContactData inGroup(GroupData group) {
-    groups.add(group);
+    groups.add(group); //отмечаем контакт, как добавленный в группу
     return this;
 
   }

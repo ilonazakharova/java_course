@@ -34,12 +34,16 @@ public class GroupData {
   private String footer;
 
 
-  @ManyToMany (mappedBy = "groups")
+  @ManyToMany (mappedBy = "groups") //в парном классе ContactData
   private Set<ContactData> contacts = new HashSet<ContactData>();
-  @JoinTable (name = "groups_list",
-              joinColumns = @JoinColumn (name = "group_id"),
-              inverseJoinColumns = @JoinColumn(name = "id"))
 
+  //@JoinTable (name = "address_in_groups",
+          //joinColumns = @JoinColumn (name = "group_id"), //указывает на объект текущего класса, столбец id группы
+          //inverseJoinColumns = @JoinColumn(name = "id")) //обратный столбец, указаывает на объект другого типа, на контакт
+
+  public Contacts getContacts() { //getter
+    return new Contacts(contacts);
+  }
 
   public int getId() {
     return id;
@@ -66,10 +70,13 @@ public class GroupData {
     return this;
   }
 
-
   public String getName() {
     return name;
   }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
