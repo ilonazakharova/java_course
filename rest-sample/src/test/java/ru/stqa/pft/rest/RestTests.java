@@ -17,7 +17,7 @@ public class RestTests {
   @Test
   public void testCreateIssue() throws IOException {
     Set<Issue> oldIssues = getIssues();
-    Issue newIssue = new Issue().withSubject("Test issue for Ilona Zakharova").withDescription("New test issue");
+    Issue newIssue = new Issue().withSubject("Test issue for RestTests").withDescription("New test issue");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
     oldIssues.add(newIssue.withId(issueId));
