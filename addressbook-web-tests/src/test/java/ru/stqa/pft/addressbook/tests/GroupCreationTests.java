@@ -52,7 +52,7 @@ public class GroupCreationTests extends TestBase {
     }
   }
 
-  @BeforeMethod
+  @BeforeMethod // 2 шаг для 16 задания, вынести в отдельный метод check availability group
   public void ensurePreconditions() {
     if (app.db().groups().size() == 0) {
       app.goTo().groupPage();

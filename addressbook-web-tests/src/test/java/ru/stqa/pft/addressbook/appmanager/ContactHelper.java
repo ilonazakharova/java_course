@@ -61,6 +61,7 @@ public class ContactHelper extends HelperBase {
       if (contactData.getGroups().size() > 0) {
         Assert.assertTrue(contactData.getGroups().size() == 1);
         new Select(wd.findElement(name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+        //  new Select(wd.findElement(name("new_group"))).selectByValue(contactData.getGroups().iterator().next().getName());
         //извлекаем группу и берем ее имя
       }
     } else {
