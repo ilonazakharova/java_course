@@ -25,7 +25,6 @@ public class UpdatePasswordTests extends TestBase {
     String password = "password"; //старый пароль
     String newpassword = "password1"; //новый пароль
     String email = "10user@localhost"; //емейл пользователя, которому меняют пароль
-
     app.navigate().login(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword")); //авторизоваться в мантис, как администратор
     app.updateHelper().changePassword(user);
 
