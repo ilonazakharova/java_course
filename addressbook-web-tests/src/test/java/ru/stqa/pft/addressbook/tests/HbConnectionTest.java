@@ -7,8 +7,6 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.NativeQuery;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -18,8 +16,7 @@ import java.util.List;
 
 public class HbConnectionTest extends TestBase{
   private SessionFactory sessionFactory;
-  protected WebDriver wd;
-  WebDriverWait wait = new WebDriverWait(wd, 20);
+
 
   @BeforeClass
   protected void initSessionFactory() throws Exception {
@@ -64,6 +61,7 @@ public class HbConnectionTest extends TestBase{
         continue;
       }
 
+
       if(numbersGroupsAssignedOnContact == 0){
         GroupData groupData = groupResult.get(0);
         //contact.getGroups().add(groupData);
@@ -75,7 +73,7 @@ public class HbConnectionTest extends TestBase{
           if(!contact.getGroups().contains(groupData)){
             //contact.getGroups().add(groupData);
             //session.save(contact);
-            addContactInGroup(contact.getId(), groupData.getName()); //вот это мне нужно реализовать с помощью xpath и новых степов с главной страницы, где находятся контакты
+            addContactInGroup(contact.getId(), groupData.getId()); //вот это мне нужно реализовать с помощью xpath и новых степов с главной страницы, где находятся контакты
             break;
           }
         }
@@ -92,25 +90,19 @@ public class HbConnectionTest extends TestBase{
 
 
   private void addContactInGroup(int contactId, int groupDataId) {
-     //new Select(wd.findElement(name("to_group"))).selectByValue(groupDataId);
-     addContactInGroup(contactId, groupDataId);
+     //app.contact().click(By.xpath("//input[contains(@type='checkbox' and @id='340')]"));
+     app.contact().click(By.cssSelector("input[id='" + contactId + "']"));
      app.contact().click(By.xpath("//select[@name='to_group']")); // список групп
      app.contact().click(By.xpath("//select[@name='to_group']/option[@value='" + groupDataId + "']")); // выбор случайной группы по id
      app.contact().click(By.xpath("//input[@value='Add to']"));  //подтверждаем добавление контакта в группу
   }
 
 
-  private void deleteContactFromGroup(int contactId, int groupDataId) { //нужно создать отдельный класс
-    deleteContactFromGroup(contactId, groupDataId);
+  private void deleteContactFromGroup(int contactId, int groupDataId) {
     app.contact().click(By.xpath("//form[@id='right']")); //выбор группы, в которой есть контакт, навигация, главная страинца с контактами
     app.contact().click(By.xpath("//form[@id='right']/select[@name='group']/option[@value='" + groupDataId + "']")); //открылось выпадающее меню, из него выбираем группу по айдишнику
     app.contact().click(By.xpath("//input[@name='remove']"));
   }
-
-  public void selectContactById(int contactId) {
-    wd.findElement(By.cssSelector("input[value='" + contactId + "']")).click();
-  }
-
 
 
 
@@ -134,7 +126,7 @@ public class HbConnectionTest extends TestBase{
 
 
 
-// 0. Добавить проверку на то, что если нет контакта, то его нужно создать
+// 0. Добавить проверку на то, что если нет контакта, то его нужно создать - добавить еще эту проверку
 //1. Получить список всех контактов +
 // 2. Проверить есть ли хотя бы 1 группа - cм groupcreationtest, если нет, то группу создала
 // 3.1. Контакт не добавлени ни в одну группу - нет связи с группой -> добавить в любую группу

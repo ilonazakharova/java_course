@@ -70,7 +70,7 @@ public class GroupData {
     return this;
   }
 
-  public int getName() {
+  public String getName() {
     return name;
   }
 
