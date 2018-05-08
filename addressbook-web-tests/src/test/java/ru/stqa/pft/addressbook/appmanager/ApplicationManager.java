@@ -49,7 +49,7 @@ public class ApplicationManager {
    } else {
 
      DesiredCapabilities capabilities = new DesiredCapabilities();
-     capabilities.setBrowserName(browser);
+     capabilities.setBrowserName(browser); // ошибка была в том, что параметр объявлялся позже его вызова
      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
 
    }
