@@ -32,7 +32,6 @@ public class ApplicationManager {
     properties = new Properties();
   }
 
-
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
@@ -61,12 +60,10 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }
-
-
+  
   public void stop() { wd.quit(); }
   public GroupHelper group() { return groupHelper; }
   public ContactHelper contact() {return contactHelper;}
   public NavigationHelper goTo() { return navigationHelper; }
-
   public DbHelper db() { return dbHelper; }
 }
