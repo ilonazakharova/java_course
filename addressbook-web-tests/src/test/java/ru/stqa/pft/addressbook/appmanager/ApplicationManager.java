@@ -60,7 +60,7 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }
-  
+
   public void stop() { wd.quit(); }
   public GroupHelper group() { return groupHelper; }
   public ContactHelper contact() {return contactHelper;}
