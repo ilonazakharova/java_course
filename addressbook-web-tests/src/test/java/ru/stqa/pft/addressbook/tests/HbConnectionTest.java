@@ -14,6 +14,8 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
+import static org.openqa.selenium.By.cssSelector;
+
 public class HbConnectionTest extends TestBase{
   private SessionFactory sessionFactory;
 
@@ -91,7 +93,9 @@ public class HbConnectionTest extends TestBase{
 
   private void addContactInGroup(int contactId, int groupDataId) {
      //app.contact().click(By.xpath("//input[contains(@type='checkbox' and @id='340')]"));
-     app.contact().click(By.cssSelector("input[id='" + contactId + "']"));
+    //app.contact().click(cssSelector("input[id='" + contactId + "']"));
+    app.contact().click(cssSelector(String.format("input[id='%s']", contactId))); //выбираю контакт с произвольным id
+
      app.contact().click(By.xpath("//select[@name='to_group']")); // список групп
      app.contact().click(By.xpath("//select[@name='to_group']/option[@value='" + groupDataId + "']")); // выбор случайной группы по id
      app.contact().click(By.xpath("//input[@value='Add to']"));  //подтверждаем добавление контакта в группу
