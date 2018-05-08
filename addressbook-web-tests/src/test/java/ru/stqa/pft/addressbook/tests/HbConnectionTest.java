@@ -81,7 +81,6 @@ public class HbConnectionTest extends TestBase{
         }
       }
 
-
       //System.out.println(contact);
       //System.out.println(contact.getGroups()); //в какие группы входит контакт
     }
@@ -94,8 +93,8 @@ public class HbConnectionTest extends TestBase{
   private void addContactInGroup(int contactId, int groupDataId) {
      //app.contact().click(By.xpath("//input[contains(@type='checkbox' and @id='340')]"));
     //app.contact().click(cssSelector("input[id='" + contactId + "']"));
+     app.goTo().contactPage();
     app.contact().click(cssSelector(String.format("input[id='%s']", contactId))); //выбираю контакт с произвольным id
-
      app.contact().click(By.xpath("//select[@name='to_group']")); // список групп
      app.contact().click(By.xpath("//select[@name='to_group']/option[@value='" + groupDataId + "']")); // выбор случайной группы по id
      app.contact().click(By.xpath("//input[@value='Add to']"));  //подтверждаем добавление контакта в группу
