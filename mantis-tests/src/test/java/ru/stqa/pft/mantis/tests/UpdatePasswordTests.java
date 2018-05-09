@@ -23,15 +23,15 @@ public class UpdatePasswordTests extends TestBase {
   @Test
   public void testUpdatePassword() throws IOException, javax.mail.MessagingException, MessagingException {
     Long longtime = System.currentTimeMillis();
-    String user = "user1525504627462"; //логин пользователя для которого меняем пароль
+    String user = "user1525445326816"; //логин пользователя для которого меняем пароль
     String password = "password"; //старый пароль
     String newpassword = "password1"; //новый пароль
-    String email = "user1525504627462@localhost"; //емейл пользователя, которому меняют пароль
+    String email = "user1525445326816@localhost"; //емейл пользователя, которому меняют пароль
     app.navigate().login(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword")); //авторизоваться в мантис, как администратор
     app.updateHelper().changePassword(user);
 
     //List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
-   List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+   List<MailMessage> mailMessages = app.mail().waitForMail(7, 10000);
 
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.updateHelper().confirmPassword(confirmationLink, newpassword); //подтверждаем смену пароля
@@ -45,7 +45,7 @@ public class UpdatePasswordTests extends TestBase {
   }
 
 
-  @AfterMethod(alwaysRun = true) //- отключаем, т.к. будем использовать отдельно стоящий сервер, а не встроенный
+ @AfterMethod(alwaysRun = true) //- отключаем, т.к. будем использовать отдельно стоящий сервер, а не встроенный
   public void stopMailServer() {
     app.mail().stop();
   }

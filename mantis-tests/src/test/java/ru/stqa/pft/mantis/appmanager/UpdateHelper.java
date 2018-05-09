@@ -21,7 +21,6 @@ public class UpdateHelper extends HelperBase{
     type(By.name("username"), username);
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class, 'clearfix')])[1]")));
     click(By.xpath("(//input[contains(@class, 'btn-round')])[2]"));
-
     //type(By.name("username"), username);
   }
 
