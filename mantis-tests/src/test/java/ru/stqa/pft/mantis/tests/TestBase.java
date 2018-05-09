@@ -21,7 +21,7 @@ public class TestBase {
     app.ftp().upload(new File("src/test/resources/config_inc.php"), "config_inc.php", "config_inc.php.bak");
   }
 
-  protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+  protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
   private boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
     return (app.soap().getStatusIssue(issueId).equals("closed"));

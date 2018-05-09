@@ -47,6 +47,7 @@ public class ContactData {
   @Expose
   @Column(name = "address")
   @Type(type = "text")
+
   private String address;
 
   @Expose

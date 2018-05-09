@@ -45,6 +45,10 @@ public class GroupData {
     return new Contacts(contacts);
   }
 
+  public Set<ContactData> getContactsSet(){
+    return contacts;
+  }
+
   public int getId() {
     return id;
   }

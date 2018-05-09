@@ -15,7 +15,8 @@ public class MailHelper {
 
   public MailHelper(ApplicationManager app) {
     this.app = app;
-    wiser = new Wiser();
+    wiser = new Wiser(2525);
+    wiser.setHostname("localhost");
 
   }
 

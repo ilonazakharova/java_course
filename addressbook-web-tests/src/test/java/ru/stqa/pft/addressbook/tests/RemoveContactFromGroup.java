@@ -11,15 +11,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static org.openqa.selenium.By.cssSelector;
 
-public class HbConnectionTest extends TestBase {
+public class RemoveContactFromGroup extends TestBase {
   private SessionFactory sessionFactory;
-
 
   @BeforeClass
   protected void initSessionFactory() throws Exception {
@@ -36,65 +33,6 @@ public class HbConnectionTest extends TestBase {
       StandardServiceRegistryBuilder.destroy(registry);
     }
   }
-
-  @Test
-  public void testHbConnection() {
-    Session session = sessionFactory.openSession();
-    //session.beginTransaction();
-    List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
-
-    if (result.size() == 0) {
-      app.goTo().contactPage();
-      app.contact().create(new ContactData().withFirstName("First Contact"));
-      result = updateContactList(session);
-    }
-
-    for (ContactData contact : result) {
-      // check group count
-      List<GroupData> groupResult = session.createQuery("from GroupData").list();
-      int numberOfGroups = groupResult.size();
-      if (numberOfGroups == 0) {
-        app.goTo().groupPage();
-        app.group().create(new GroupData().withName("test1"));
-        groupResult = updateGroupList(session);
-      }
-
-      //long numberAssignedGroups = getGroupCount(session, contact.getId());
-      //if(numberAssignedGroups == numberOfGroups){
-      // continue;
-      //}
-
-      int numbersGroupsAssignedOnContact = contact.getGroups().size();
-      if (numbersGroupsAssignedOnContact == numberOfGroups) {
-        continue;
-      }
-
-
-      if (numbersGroupsAssignedOnContact == 0) {
-        GroupData groupData = groupResult.get(0);
-        //contact.getGroups().add(groupData);
-        //session.save(contact);
-        addContactInGroup(contact.getId(), groupData.getId()); // getId - add xpath
-        //deleteContactFromGroup(contact.getId(), groupData.getId());
-      } else {
-        for (GroupData groupData : groupResult) {
-          if (!contact.getGroups().contains(groupData)) {
-            //contact.getGroups().add(groupData);
-            //session.save(contact);
-            addContactInGroup(contact.getId(), groupData.getId()); //вот это мне нужно реализовать с помощью xpath и новых степов с главной страницы, где находятся контакты
-            break;
-          }
-        }
-      }
-
-      //System.out.println(contact);
-      //System.out.println(contact.getGroups()); //в какие группы входит контакт
-    }
-    //session.getTransaction().commit();
-    session.close();
-
-  }
-
 
   @Test
   public void testDeleteContactFromGroup() {
@@ -150,7 +88,7 @@ public class HbConnectionTest extends TestBase {
           GroupData groupData = groupResult.get(0);
           addContactInGroup(contact.getId(), groupData.getId()); // getId - add xpath
           groupResult = updateGroupList(session);
-         } else {
+        } else {
           for (GroupData groupData : groupResult) {
             if (!contact.getGroups().contains(groupData)) {
               addContactInGroup(contact.getId(), groupData.getId()); //вот это мне нужно реализовать с помощью xpath и новых степов с главной страницы, где находятся контакты
@@ -182,8 +120,6 @@ public class HbConnectionTest extends TestBase {
 
 
   private void addContactInGroup(int contactId, int groupDataId) {
-    //app.contact().click(By.xpath("//input[contains(@type='checkbox' and @id='340')]"));
-    //app.contact().click(cssSelector("input[id='" + contactId + "']"));
     app.goTo().contactPage();
     app.contact().click(cssSelector(String.format("input[id='%s']", contactId))); //выбираю контакт с произвольным id
     app.contact().click(By.xpath("//select[@name='to_group']")); // список групп
@@ -222,7 +158,7 @@ public class HbConnectionTest extends TestBase {
 }
 
 // 0. Добавить проверку на то, что если нет контакта, то его нужно создать - добавить еще эту проверку
-//1. Получить список всех контактов +
+//1. Получить список всех контактов + +
 // 2. Проверить есть ли хотя бы 1 группа - cм groupcreationtest, если нет, то группу создала
 // 3.1. Контакт не добавлени ни в одну группу - нет связи с группой -> добавить в любую группу
 // 3.2. Контакт добавлен в группу, берем следующую, до тех пор пока не закончится список групп
@@ -232,3 +168,4 @@ public class HbConnectionTest extends TestBase {
 // 1.1. если есть - до мы должны удалить эту группу
 // 1.2. если группы у контакта нет - нам нужно взять другой контакт
 // 1.2.1. если группы у контакта нет - создать группу, добавить контакт в эту группу, потом удалить эту группу из  контакта +
+

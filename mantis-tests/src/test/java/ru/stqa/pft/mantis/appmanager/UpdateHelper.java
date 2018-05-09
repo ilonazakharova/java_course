@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UpdateHelper extends HelperBase{
-  WebDriverWait wait = new WebDriverWait(wd, 20);
+  WebDriverWait wait = new WebDriverWait(wd, 200);
 
   public UpdateHelper(ApplicationManager app) {
     super(app);
@@ -18,7 +18,7 @@ public class UpdateHelper extends HelperBase{
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[contains(@class, 'nav-tabs')]")));
     click(By.xpath("//ul[contains(@class, 'nav-tabs')]/li[2]/a")); // нажимаем на ссылку "Изменить учетную запись"
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//table[contains(@class, 'table-striped')]")));
-    //type(By.name("username"), username);
+    type(By.name("username"), username);
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class, 'clearfix')])[1]")));
     click(By.xpath("(//input[contains(@class, 'btn-round')])[2]"));
 
