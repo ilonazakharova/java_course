@@ -31,11 +31,12 @@ public class UpdatePasswordTests extends TestBase {
     app.updateHelper().changePassword(user);
 
     //List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
-   List<MailMessage> mailMessages = app.mail().waitForMail(7, 10000);
-
+     List<MailMessage> mailMessages = app.mail().waitForMail(7, 10000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.updateHelper().confirmPassword(confirmationLink, newpassword); //подтверждаем смену пароля
     assertTrue(app.newSession().login(user, newpassword)); //проаверяем, что пользователь может авторизоваться с новым паролем
+
+
   }
 
   private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
@@ -43,6 +44,7 @@ public class UpdatePasswordTests extends TestBase {
     VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
     return regex.getText(mailMessage.text);
   }
+
 
 
  @AfterMethod(alwaysRun = true) //- отключаем, т.к. будем использовать отдельно стоящий сервер, а не встроенный
