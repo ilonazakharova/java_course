@@ -50,22 +50,25 @@ public class UpdatePasswordTests extends TestBase {
   public void testUpdatePassword() throws IOException, javax.mail.MessagingException, MessagingException, SQLException {
     Session session = sessionFactory.openSession();
     //session.beginTransaction();
-    List<UserInformation> result = session.createQuery("from UserInformation where username != 'administrator'").list(); //!изменила запрос, не включаем пользователя администратора для смены пароля
+    List<UserInformation> result = session.createQuery("from UserInformation where username != 'administrator'").list(); //+
 
     UserInformation user = result.get(0);
     Long longtime = System.currentTimeMillis();
     //String user = "user1525882854734"; //логин пользователя для которого меняем пароль
     String password = "password"; //старый пароль
     String newpassword = "password1"; //новый пароль
-    String email = "user1525882854734@localhost"; //емейл пользователя, которому меняют пароль
+    //String email = "user1525882854734@localhost"; //емейл пользователя, которому меняют пароль
     app.navigate().login(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword")); //авторизоваться в мантис, как администратор
 
-    app.updateHelper().changePassword(user.getUserName()); //!берем имя пользователя
-    app.updateHelper().changePassword(user.getEmail()); //!берем емейл
+    app.updateHelper().changePassword(user.getUserName()); //+
+    app.updateHelper().changePassword(user.getEmail()); //+
 
     //List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000); //отключаем внешний почтовый сервер
     List<MailMessage> mailMessages = app.mail().waitForMail(7, 10000);
-    String confirmationLink = findConfirmationLink(mailMessages, email);
+
+    String confirmationLink = findConfirmationLink(mailMessages, user.getEmail()); //+
+
+
     app.updateHelper().confirmPassword(confirmationLink, newpassword); //подтверждаем смену пароля
     assertTrue(app.newSession().login(user.getUserName(), newpassword)); //проаверяем, что пользователь может авторизоваться с новым паролем
   }
