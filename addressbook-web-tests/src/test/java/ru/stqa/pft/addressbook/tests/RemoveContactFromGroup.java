@@ -20,16 +20,14 @@ public class RemoveContactFromGroup extends TestBase {
 
   @BeforeClass
   protected void initSessionFactory() throws Exception {
-    // A SessionFactory is set up once for an application!
     final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-            .configure() // configures settings from hibernate.cfg.xml
+            .configure()
             .build();
     try {
       sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     } catch (Exception e) {
-      e.printStackTrace(); //вывод сообщения об ошибке на консоль
-      // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
-      // so destroy it manually.
+      e.printStackTrace();
+
       StandardServiceRegistryBuilder.destroy(registry);
     }
   }
@@ -37,16 +35,13 @@ public class RemoveContactFromGroup extends TestBase {
   @Test
   public void testDeleteContactFromGroup() {
     Session session = sessionFactory.openSession();
-    //1. получить список групп, у которых есть хотя бы 1 контакт
     List<GroupData> groupResult = session.createQuery("from GroupData").list();
     groupResult = groupResult.stream().filter(group -> group.getContacts().size() > 0).collect(Collectors.toList());
-    // 2. взять первую группу с контактом, для того, чтобы потом контакт удалить
     if (!groupResult.isEmpty()) {
       GroupData groupWithContact = groupResult.get(0);
       app.contact().click(By.xpath("//form[@id='right']")); //выбор группы, в которой есть контакт, навигация, главная страинца с контактами
       app.contact().click(By.xpath("//form[@id='right']/select[@name='group']/option[@value='" + groupWithContact.getId() + "']")); //открылось выпадающее меню, из него выбираем группу по айдишнику
-      //  List<ContactData> arrayList = new ArrayList<ContactData>(groupWithContact.getContactsSet());
-      // ContactData contactData = arrayList.get(0);
+
       ContactData contactData = null;
       if (groupWithContact.getContactsSet().iterator().hasNext()) {
         contactData = groupWithContact.getContactsSet().iterator().next();
@@ -102,8 +97,6 @@ public class RemoveContactFromGroup extends TestBase {
         GroupData groupWithContact = groupResult.get(0);
         app.contact().click(By.xpath("//form[@id='right']")); //выбор группы, в которой есть контакт, навигация, главная страинца с контактами
         app.contact().click(By.xpath("//form[@id='right']/select[@name='group']/option[@value='" + groupWithContact.getId() + "']")); //открылось выпадающее меню, из него выбираем группу по айдишнику
-        //  List<ContactData> arrayList = new ArrayList<ContactData>(groupWithContact.getContactsSet());
-        // ContactData contactData = arrayList.get(0);
         ContactData contactData = null;
         if (groupWithContact.getContactsSet().iterator().hasNext()) {
           contactData = groupWithContact.getContactsSet().iterator().next();
@@ -156,16 +149,3 @@ public class RemoveContactFromGroup extends TestBase {
 
 
 }
-
-// 0. Добавить проверку на то, что если нет контакта, то его нужно создать - добавить еще эту проверку
-//1. Получить список всех контактов + +
-// 2. Проверить есть ли хотя бы 1 группа - cм groupcreationtest, если нет, то группу создала
-// 3.1. Контакт не добавлени ни в одну группу - нет связи с группой -> добавить в любую группу
-// 3.2. Контакт добавлен в группу, берем следующую, до тех пор пока не закончится список групп
-
-
-//1. Берем любой контакт, проверяем есть ли группа у него
-// 1.1. если есть - до мы должны удалить эту группу
-// 1.2. если группы у контакта нет - нам нужно взять другой контакт
-// 1.2.1. если группы у контакта нет - создать группу, добавить контакт в эту группу, потом удалить эту группу из  контакта +
-
