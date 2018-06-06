@@ -15,5 +15,4 @@ public class Lesson3_task3 {
       System.out.println("Fx = " + Fx);
     }
   }
-
 }

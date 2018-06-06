@@ -16,8 +16,6 @@ public class Lesson3_task2 {
         Fx = 2 * Math.tan(x / 2) + 1;
         System.out.println("Fx =" + Fx);
       }
-
       }
      }
-
   }
