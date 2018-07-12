@@ -1,4 +1,4 @@
-package ru.stqa.pft.sandbox;
+package ru.stqa.pft.sandbox.Lecture1;
 
 public class Summanumbers {
   public static void main(String[] args) {
