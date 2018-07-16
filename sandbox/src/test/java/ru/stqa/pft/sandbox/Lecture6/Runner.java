@@ -36,6 +36,6 @@ public class Runner {
   }
 
   private static double getStudentAverage(Student student){
-    return student.getProgramming() + student.getMathematics() + student.getEnglish() / 3;
+    return (student.getProgramming() + student.getMathematics() + student.getEnglish()) / 3;
   }
 }
